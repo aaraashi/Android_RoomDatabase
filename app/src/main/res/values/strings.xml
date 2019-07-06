@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">DesignApplication</string>
+    <string name="main_title">
+        Centennial Clinic \nPatient Management</string>
+    <string name="find_pw"><u>Forgot Password</u></string>
+    <string name="no_account">Don\'t have an account yet?</string>
+    <string name="patient_info">Patient Information</string>
+</resources>

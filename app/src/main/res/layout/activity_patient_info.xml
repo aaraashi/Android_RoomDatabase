@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorDB"
+    android:orientation="vertical"
+    tools:context=".PatientInfoActivity">
+
+
+    <TextView
+        android:id="@+id/textview_account"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="340dp"
+        android:layout_marginTop="10dp"
+        android:text="Angel486"
+        android:textColor="@color/colorGray"
+        android:textSize="14sp" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginLeft="340dp"
+        android:layout_marginTop="30dp"
+        android:layout_weight="1"
+        app:srcCompat="@drawable/profile" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="140dp"
+        android:fontFamily="helvetica"
+        android:text="@string/patient_info"
+        android:textAlignment="center"
+        android:textColor="@color/colorGray"
+        android:textSize="32sp"
+        android:textStyle="bold" />
+
+
+    <TextView
+        android:id="@+id/textView_col1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="200dp"
+        android:text="ID"/>
+    <TextView
+        android:id="@+id/textView_col2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="200dp"
+        android:text="FirstName" />
+    <TextView
+        android:id="@+id/textView_col3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="150dp"
+        android:layout_marginTop="200dp"
+        android:text="LastName" />
+
+    <TextView
+        android:id="@+id/textView_col4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="230dp"
+        android:layout_marginTop="200dp"
+        android:text="Dept." />
+
+    <TextView
+        android:id="@+id/textView_col5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="290dp"
+        android:layout_marginTop="200dp"
+        android:text="NurseID" />
+
+    <TextView
+        android:id="@+id/textView_col6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="360dp"
+        android:layout_marginTop="200dp"
+        android:text="Room" />
+
+    <!--<GridView-->
+        <!--android:id="@+id/gridview_patient"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="150dp"-->
+        <!--android:layout_below="@+id/textView_col1"-->
+        <!--android:layout_alignParentLeft="true"-->
+        <!--android:clickable="true"-->
+        <!--android:fastScrollAlwaysVisible="true"-->
+        <!--android:fastScrollEnabled="true"-->
+        <!--android:numColumns="6"></GridView>-->
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_below="@+id/textView_col1"
+        android:layout_marginTop="-2dp"
+        app:layoutManager="LinearLayoutManager"
+        tools:listitem="@layout/patient_list" />
+
+
+    <Button
+        android:id="@+id/button_addPatient"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="106dp"
+        android:layout_marginEnd="105dp"
+        android:layout_marginBottom="177dp"
+        android:background="@drawable/button_forward"
+        android:onClick="addNewPatient"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:text="Add New Patient"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp" />
+</RelativeLayout>
