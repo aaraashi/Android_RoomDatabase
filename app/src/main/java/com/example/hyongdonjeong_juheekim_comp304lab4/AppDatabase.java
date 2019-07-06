@@ -41,9 +41,12 @@ public abstract class AppDatabase extends RoomDatabase {
     private static class PopulateDbAsyncTask extends AsyncTask<Void, Void, Void> {
         private PatientDao patientDao;
         private Patient patient;
+        private TestDao testDao;
+        private Test test;
 
         private PopulateDbAsyncTask(AppDatabase db) {
             patientDao = db.patientDao();
+            testDao = db.testDao();
         }
 
         @Override
@@ -51,8 +54,11 @@ public abstract class AppDatabase extends RoomDatabase {
             patientDao.insert(new Patient(patient.getPatientId(), "Chalie", "Mack", "Gen", 200, "301"));
             patientDao.insert(new Patient(patient.getPatientId(),"Kate", "Lynn", "Gen", 200, "202"));
             patientDao.insert(new Patient(patient.getPatientId(),"Jason", "Kim", "Eem", 400, "502"));
+            testDao.insert(new Test(test.getTestId(), 2, 200, 80, 120, 35.2, 6.2, 7.1, 0.9, 0.8));
+            testDao.insert(new Test(test.getTestId(), 3, 200, 80, 120, 35.2, 6.2, 7.1, 0.9, 0.8));
             return null;
         }
+
     }
 
 

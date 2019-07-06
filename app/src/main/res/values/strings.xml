@@ -5,4 +5,5 @@
     <string name="find_pw"><u>Forgot Password</u></string>
     <string name="no_account">Don\'t have an account yet?</string>
     <string name="patient_info">Patient Information</string>
+    <string name="test_info">Test Information</string>
 </resources>

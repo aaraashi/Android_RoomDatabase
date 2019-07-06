@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         public void logIn (View v){
-            Intent intent = new Intent(MainActivity.this, PatientInfoActivity.class );
+            Intent intent = new Intent(MainActivity.this, WelcomeActivity.class );
             startActivity(intent);
         }
     }

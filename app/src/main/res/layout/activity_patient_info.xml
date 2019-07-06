@@ -86,23 +86,12 @@
         android:layout_marginTop="200dp"
         android:text="Room" />
 
-    <!--<GridView-->
-        <!--android:id="@+id/gridview_patient"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="150dp"-->
-        <!--android:layout_below="@+id/textView_col1"-->
-        <!--android:layout_alignParentLeft="true"-->
-        <!--android:clickable="true"-->
-        <!--android:fastScrollAlwaysVisible="true"-->
-        <!--android:fastScrollEnabled="true"-->
-        <!--android:numColumns="6"></GridView>-->
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="260dp"
         android:layout_below="@+id/textView_col1"
-        android:layout_marginTop="-2dp"
+        android:layout_marginTop="8dp"
         app:layoutManager="LinearLayoutManager"
         tools:listitem="@layout/patient_list" />
 
@@ -111,12 +100,12 @@
         android:id="@+id/button_addPatient"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/recycler_view"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
         android:layout_marginStart="106dp"
+        android:layout_marginTop="19dp"
         android:layout_marginEnd="105dp"
-        android:layout_marginBottom="177dp"
         android:background="@drawable/button_forward"
         android:onClick="addNewPatient"
         android:paddingLeft="30dp"

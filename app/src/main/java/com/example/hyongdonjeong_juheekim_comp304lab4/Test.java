@@ -19,6 +19,23 @@ public class Test {
     private double ESL;
     private double ESR;
 
+    public Test(int testId, int patientId, int nurseId, int BPL, int BPH, double temperature, double weight, double height, double ESL, double ESR) {
+        this.testId = testId;
+        this.patientId = patientId;
+        this.nurseId = nurseId;
+        this.BPL = BPL;
+        this.BPH = BPH;
+        this.temperature = temperature;
+        this.weight = weight;
+        this.height = height;
+        this.ESL = ESL;
+        this.ESR = ESR;
+    }
+
+    public Test() {
+
+    }
+
     public int getTestId() {
         return testId;
     }
