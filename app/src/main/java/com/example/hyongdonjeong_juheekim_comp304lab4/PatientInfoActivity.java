@@ -51,7 +51,7 @@ public class PatientInfoActivity extends AppCompatActivity {
             @Override
             public void onItemClick(Patient patient) {
                 Intent intent = new Intent(PatientInfoActivity.this, UpdatePatientActivity.class);
-                intent.putExtra(UpdatePatientActivity.EXTRA_ID, String.valueOf(patient.getPatientId()));
+                intent.putExtra(UpdatePatientActivity.EXTRA_ID, patient.getPatientId());
                 intent.putExtra(UpdatePatientActivity.EXTRA_FNAME, patient.getFirstname());
                 intent.putExtra(UpdatePatientActivity.EXTRA_LNAME, patient.getLastname());
                 intent.putExtra(UpdatePatientActivity.EXTRA_NURSEID, String.valueOf(patient.getNurseId()));

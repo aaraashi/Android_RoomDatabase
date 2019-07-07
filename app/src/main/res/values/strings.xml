@@ -6,4 +6,6 @@
     <string name="no_account">Don\'t have an account yet?</string>
     <string name="patient_info">Patient Information</string>
     <string name="test_info">Test Information</string>
+    <string name="button_save">Save Data</string>
+    <string name="button_delete">Delete</string>
 </resources>

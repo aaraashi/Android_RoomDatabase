@@ -10,6 +10,7 @@
 
 
     <SearchView
+        android:id="@+id/search_view"
         android:layout_width="100dp"
         android:layout_height="40dp"
         android:layout_below="@+id/textView_t_title"

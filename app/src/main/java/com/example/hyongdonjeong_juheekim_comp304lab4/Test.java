@@ -4,7 +4,7 @@ package com.example.hyongdonjeong_juheekim_comp304lab4;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity
+@Entity(tableName = "Test")
 public class Test {
     @PrimaryKey(autoGenerate = true)
     private int testId;

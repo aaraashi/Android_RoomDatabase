@@ -48,11 +48,6 @@ public class UpdatePatientActivity extends AppCompatActivity {
         intent = getIntent();
 
         if (intent.hasExtra(EXTRA_ID)) {
-//            String fName = intent.getStringExtra("fName");
-//            String lName = intent.getStringExtra("lName");
-//            String nurseId = intent.getStringExtra("nurseId");
-//            String dept = intent.getStringExtra("dept");
-//            String room = intent.getStringExtra("room");
             editText_fname.setText(intent.getStringExtra(EXTRA_FNAME));
             editText_lname.setText(intent.getStringExtra(EXTRA_LNAME));
             editText_p_nurse.setText(intent.getStringExtra(EXTRA_NURSEID));
@@ -72,27 +67,16 @@ public class UpdatePatientActivity extends AppCompatActivity {
             }
         });
 
-        patientViewModel.getAllPatient().observe(this, new Observer<List<Patient>>() {
-            @Override
-            public void onChanged(@Nullable List<Patient> result) {
-                String output = "";
-                for (Patient patient : result) {
-                    output += patient.getFirstname() + "\n";
-                }
-                //textViewDisplay.setText(output);
-            }
-        });
-
-        patientViewModel.getInsertResult().observe(this, new Observer<Integer>() {
-            @Override
-            public void onChanged(@Nullable Integer result) {
-                if (result == 1) {
-                    Toast.makeText(UpdatePatientActivity.this, "Patient successfully saved", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(UpdatePatientActivity.this, "Error saving patient", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
+//        patientViewModel.getAllPatient().observe(this, new Observer<List<Patient>>() {
+//            @Override
+//            public void onChanged(@Nullable List<Patient> result) {
+//                String output = "";
+//                for (Patient patient : result) {
+//                    output += patient.getFirstname() + "\n";
+//                }
+//                //textViewDisplay.setText(output);
+//            }
+//        });
     }
 
 
@@ -105,24 +89,24 @@ public class UpdatePatientActivity extends AppCompatActivity {
         patient.setRoom(editText_p_room.getText().toString());
 
         if (intent.hasExtra(EXTRA_ID)) {
-            //patientDao.updateRow(editText_fname.getText().toString(), editText_lname.getText().toString(), Integer.parseInt(editText_p_nurse.getText().toString()), editText_p_dept.getText().toString(), editText_p_room.getText().toString(), Integer.parseInt(intent.getStringExtra(EXTRA_ID)));
+
+            int id = getIntent().getIntExtra(EXTRA_ID, -1);
+            patient.setPatientId(id);
             patientViewModel.update(patient);
+            displayToast("The patient information has been updated!");
         }
         else {
             patientViewModel.insert(patient);
+            displayToast("The patient information has been saved!");
         }
-
-        //displayToast("The patient information has been updated!");
     }
 
     public void deletePatient (View v){
-        patient.setFirstname(editText_fname.getText().toString());
-        patient.setLastname(editText_lname.getText().toString());
-        patient.setDepartment(editText_p_dept.getText().toString());
-        patient.setNurseId(Integer.parseInt(editText_p_nurse.getText().toString()));
-        patient.setRoom(editText_p_room.getText().toString());
 
+        int id = getIntent().getIntExtra(EXTRA_ID, -1);
+        patient.setPatientId(id);
         patientViewModel.delete(patient);
+        displayToast("Test deleted");
 
     }
 

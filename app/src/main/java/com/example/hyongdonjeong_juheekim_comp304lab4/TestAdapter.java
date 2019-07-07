@@ -3,6 +3,7 @@ package com.example.hyongdonjeong_juheekim_comp304lab4;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,6 +12,7 @@ import java.util.List;
 
 public class TestAdapter extends RecyclerView.Adapter<TestAdapter.TestHolder> {
     private List<Test> tests = new ArrayList<>();
+    private List<Test> testFull;
     private TestAdapter.OnItemClickListener listener;
 
     @NonNull
@@ -21,19 +23,24 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.TestHolder> {
         return new TestAdapter.TestHolder(itemView);
     }
 
+//    TestAdapter(List<Test> tests) {
+//        this.tests = tests;
+//        testFull = new ArrayList<>(tests);
+//    }
+
     @Override
     public void onBindViewHolder(@NonNull TestAdapter.TestHolder holder, int position) {
         Test currentTest = tests.get(position);
-        holder.textViewTestId.setText("TestId: " + String.valueOf(currentTest.getTestId()));
-        holder.textViewPatientId.setText("PatientId: " + String.valueOf(currentTest.getPatientId()));
-        holder.textViewNurseId.setText("NurseId: " + String.valueOf(currentTest.getNurseId()));
-        holder.textViewBPL.setText("BPL: " + String.valueOf(currentTest.getBPL()));
-        holder.textViewBPH.setText("BPH: " + String.valueOf(currentTest.getBPH()));
-        holder.textViewTemp.setText("Temp.: " + String.valueOf(currentTest.getTemperature()));
-        holder.textViewWeight.setText("Weight: " + String.valueOf(currentTest.getWeight()));
-        holder.textViewHeight.setText("Height: " + String.valueOf(currentTest.getHeight()));
-        holder.textViewESL.setText("ESL: " + String.valueOf(currentTest.getESL()));
-        holder.textViewESR.setText("ESR: " + String.valueOf(currentTest.getESR()));
+        holder.textViewTestId.setText("TestId: " + (currentTest.getTestId()));
+        holder.textViewPatientId.setText("PatientId: " + (currentTest.getPatientId()));
+        holder.textViewNurseId.setText("NurseId: " + (currentTest.getNurseId()));
+        holder.textViewBPL.setText("BPL: " + (currentTest.getBPL()));
+        holder.textViewBPH.setText("BPH: " + (currentTest.getBPH()));
+        holder.textViewTemp.setText("Temp.: " + (currentTest.getTemperature()));
+        holder.textViewWeight.setText("Weight: " + (currentTest.getWeight()));
+        holder.textViewHeight.setText("Height: " + (currentTest.getHeight()));
+        holder.textViewESL.setText("ESL: " + (currentTest.getESL()));
+        holder.textViewESR.setText("ESR: " + (currentTest.getESR()));
     }
 
     @Override
@@ -44,6 +51,10 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.TestHolder> {
     public void setTests(List<Test> tests) {
         this.tests = tests;
         notifyDataSetChanged();
+    }
+
+    public Test getTestsAt(int position) {
+        return tests.get(position);
     }
 
     class TestHolder extends RecyclerView.ViewHolder {
@@ -81,6 +92,41 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.TestHolder> {
             });
         }
     }
+
+    public Filter getFilter() {
+        return testFilter;
+    }
+
+    private Filter testFilter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            List<Test> filteredList = new ArrayList<>();
+
+            if (constraint == null || constraint.length() == 0) {
+                filteredList.addAll(testFull);
+            } else {
+                String filterPattern = constraint.toString().toLowerCase().trim();
+
+                for (Test item : testFull) {
+                    if (String.valueOf(item.getPatientId()).contains(filterPattern)) {
+                        filteredList.add(item);
+                    }
+                }
+            }
+
+            FilterResults results = new FilterResults();
+            results.values = filteredList;
+
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            tests.clear();
+            tests.addAll((List) results.values);
+            notifyDataSetChanged();
+        }
+    };
 
     public interface OnItemClickListener {
         void onItemClick(Test Test);

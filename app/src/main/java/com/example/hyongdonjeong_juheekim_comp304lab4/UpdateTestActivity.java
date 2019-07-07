@@ -4,6 +4,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,7 +16,7 @@ import java.util.List;
 
 public class UpdateTestActivity extends AppCompatActivity {
 
-    private TestViewModel TestViewModel;
+    private TestViewModel testViewModel;
     private TestDao TestDao;
     private AppDatabase appDatabase;
     public static EditText editText_t_patient, editText_t_nusre, editText_bpl, editText_bph, editText_temp, editText_weight, editText_height, editText_esl, editText_esr;
@@ -39,7 +40,7 @@ public class UpdateTestActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_test);
 
-        TestViewModel = ViewModelProviders.of(this).get(TestViewModel.class);
+        testViewModel = ViewModelProviders.of(this).get(TestViewModel.class);
         test = new Test();
 
         editText_t_patient = findViewById(R.id.editText_t_patientId);
@@ -65,11 +66,9 @@ public class UpdateTestActivity extends AppCompatActivity {
             editText_height.setText(intent.getStringExtra(EXTRA_HEIGHT));
             editText_esl.setText(intent.getStringExtra(EXTRA_ESL));
             editText_esr.setText(intent.getStringExtra(EXTRA_ESR));
+        }else {}
 
-        } else {
-        }
-
-        TestViewModel.getInsertResult().observe(this, new Observer<Integer>() {
+        testViewModel.getInsertResult().observe(this, new Observer<Integer>() {
             @Override
             public void onChanged(@Nullable Integer result) {
                 if (result == 1) {
@@ -80,18 +79,18 @@ public class UpdateTestActivity extends AppCompatActivity {
             }
         });
 
-        TestViewModel.getAllTests().observe(this, new Observer<List<Test>>() {
-            @Override
-            public void onChanged(@Nullable List<Test> result) {
-                String output = "";
-                for (Test Test : result) {
-                    //output += Test.getFirstname() + "\n";
-                }
-                //textViewDisplay.setText(output);
-            }
-        });
+//        testViewModel.getAllTests().observe(this, new Observer<List<Test>>() {
+//            @Override
+//            public void onChanged(@Nullable List<Test> result) {
+//                String output = "";
+//                for (Test Test : result) {
+//                    //output += Test.getFirstname() + "\n";
+//                }
+//                //textViewDisplay.setText(output);
+//            }
+//        });
 
-        TestViewModel.getInsertResult().observe(this, new Observer<Integer>() {
+        testViewModel.getInsertResult().observe(this, new Observer<Integer>() {
             @Override
             public void onChanged(@Nullable Integer result) {
                 if (result == 1) {
@@ -106,6 +105,7 @@ public class UpdateTestActivity extends AppCompatActivity {
 
     public void updateTest (View v){
 
+
         test.setPatientId(Integer.parseInt(editText_t_patient.getText().toString()));
         test.setNurseId(Integer.parseInt(editText_t_nusre.getText().toString()));
         test.setBPL(Integer.parseInt(editText_bpl.getText().toString()));
@@ -115,31 +115,66 @@ public class UpdateTestActivity extends AppCompatActivity {
         test.setHeight(Double.parseDouble(editText_height.getText().toString()));
         test.setESL(Double.parseDouble(editText_esl.getText().toString()));
         test.setESR(Double.parseDouble(editText_esr.getText().toString()));
-        TestViewModel.insert(test);
+
+        if (intent.hasExtra(EXTRA_TESTID)) {
+        int id = getIntent().getIntExtra(EXTRA_TESTID, -1);
+        test.setTestId(id);
+        testViewModel.update(test);
+    }
+        else {
+        testViewModel.insert(test);
+    }
+
+//        int patientId = Integer.parseInt(editText_t_patient.getText().toString());
+//        int nurseId = Integer.parseInt(editText_t_nusre.getText().toString());
+//        int BPL = Integer.parseInt(editText_bpl.getText().toString());
+//        int BPH = Integer.parseInt(editText_bph.getText().toString());
+//        double temp = Double.parseDouble(editText_temp.getText().toString());
+//        double weight = Double.parseDouble(editText_weight.getText().toString());
+//        double height = Double.parseDouble(editText_height.getText().toString());
+//        double ESL = Double.parseDouble(editText_esl.getText().toString());
+//        double ESR = Double.parseDouble(editText_esr.getText().toString());
 
 //        if (intent.hasExtra(EXTRA_TESTID)) {
-//            //TestDao.updateRow(editText_fname.getText().toString(), editText_lname.getText().toString(), Integer.parseInt(editText_p_nurse.getText().toString()), editText_p_dept.getText().toString(), editText_p_room.getText().toString(), Integer.parseInt(intent.getStringExtra(EXTRA_ID)));
-//            TestViewModel.update(test);
-//        }
-//        else {
-//            TestViewModel.insert(test);
-//        }
+//            Intent data = new Intent();
+//            data.putExtra(EXTRA_PATIENTID, editText_t_patient.getText().toString());
+//            data.putExtra(EXTRA_T_NURSEID, editText_t_nusre.getText().toString());
+//            data.putExtra(EXTRA_BPL, editText_bpl.getText().toString());
+//            data.putExtra(EXTRA_BPH, editText_bph.getText().toString());
+//            data.putExtra(EXTRA_TEMP, editText_temp.getText().toString());
+//            data.putExtra(EXTRA_WEIGHT, editText_weight.getText().toString());
+//            data.putExtra(EXTRA_HEIGHT, editText_height.getText().toString());
+//            data.putExtra(EXTRA_ESL, editText_esl.getText().toString());
+//            data.putExtra(EXTRA_ESR, editText_esr.getText().toString());
 
-        //displayToast("The Test information has been updated!");
+//            data.putExtra(EXTRA_PATIENTID, patientId);
+//            data.putExtra(EXTRA_T_NURSEID, nurseId);
+//            data.putExtra(EXTRA_BPL, BPL);
+//            data.putExtra(EXTRA_BPH, BPH);
+//            data.putExtra(EXTRA_TEMP, temp);
+//            data.putExtra(EXTRA_WEIGHT,weight);
+//            data.putExtra(EXTRA_HEIGHT,height);
+//            data.putExtra(EXTRA_ESL, ESL);
+//            data.putExtra(EXTRA_ESR, ESR);
+//
+//            int id = getIntent().getIntExtra(EXTRA_TESTID, -1);
+//            if (id != -1) {
+//                data.putExtra(EXTRA_TESTID, id);
+//            }
+//
+//            setResult(RESULT_OK, data);
+//            finish();
+//
+//        }
+        displayToast("The test information has been saved!");
     }
 
     public void deleteTest (View v) {
 
-//        test.setPatientId(Integer.parseInt(editText_t_patient.getText().toString()));
-//        test.setNurseId(Integer.parseInt(editText_t_nusre.getText().toString()));
-//        test.setBPL(Integer.parseInt(editText_bpl.getText().toString()));
-//        test.setBPH(Integer.parseInt(editText_bph.getText().toString()));
-//        test.setTemperature(Double.parseDouble(editText_temp.getText().toString()));
-//        test.setWeight(Double.parseDouble(editText_weight.getText().toString()));
-//        test.setHeight(Double.parseDouble(editText_height.getText().toString()));
-//        test.setESL(Double.parseDouble(editText_esl.getText().toString()));
-//        test.setESR(Double.parseDouble(editText_esr.getText().toString()));
-        TestViewModel.deleteAllTest();
+        int id = getIntent().getIntExtra(EXTRA_TESTID, -1);
+        test.setTestId(id);
+        testViewModel.delete(test);
+        Toast.makeText(UpdateTestActivity.this, "Test deleted", Toast.LENGTH_SHORT).show();
     }
 
     public void displayToast(String message){
