@@ -10,12 +10,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -23,6 +25,7 @@ import java.util.List;
 
 public class PatientInfoActivity extends AppCompatActivity {
 
+    private TextView tvNurseInfo;
     private PatientViewModel patientViewModel;
     private RecyclerView recyclerView;
     public static final int ADD_PATIENT_REQUEST = 1;
@@ -38,6 +41,13 @@ public class PatientInfoActivity extends AppCompatActivity {
 
         final PatientAdapter adapter = new PatientAdapter();
         recyclerView.setAdapter(adapter);
+
+        // display nurse information: first name (id)
+        tvNurseInfo = (TextView) findViewById(R.id.textView_nurseInfo);
+        SharedPreferences nursePreference = getSharedPreferences("NursePref", MODE_PRIVATE);
+
+        tvNurseInfo.setText(nursePreference.getString("nurseNameString","")
+                + "(" + nursePreference.getString("nurseIdString","") + ")");
 
         patientViewModel = ViewModelProviders.of(this).get(PatientViewModel.class);
         patientViewModel.getAllPatient().observe(this, new Observer<List<Patient>>() {
@@ -62,6 +72,11 @@ public class PatientInfoActivity extends AppCompatActivity {
         });
     }
 
+
+    public void nurseInfo (View v){
+        Intent intent = new Intent(PatientInfoActivity.this, UpdateNurseActivity.class );
+        startActivity(intent);
+    }
 
     public void addNewPatient (View v){
         Intent intent = new Intent(PatientInfoActivity.this, UpdatePatientActivity.class );

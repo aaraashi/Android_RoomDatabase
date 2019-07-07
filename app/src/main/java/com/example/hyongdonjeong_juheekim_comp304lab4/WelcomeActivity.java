@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.TextView;
 
 public class WelcomeActivity extends AppCompatActivity {
-    TextView tvNurseInfo, tvWelcome;
+    private TextView tvNurseInfo, tvWelcome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +25,11 @@ public class WelcomeActivity extends AppCompatActivity {
                 + "(" + nursePreference.getString("nurseIdString","") + ")");
         tvWelcome.setText("Welcome " + nursePreference.getString("nurseNameString","") + "!");
 
+    }
+
+    public void nurseInfo (View v){
+        Intent intent = new Intent(WelcomeActivity.this, UpdateNurseActivity.class );
+        startActivity(intent);
     }
 
     public void patientInfo (View v){

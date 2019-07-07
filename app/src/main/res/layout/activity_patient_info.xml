@@ -10,22 +10,24 @@
 
 
     <TextView
-        android:id="@+id/textview_account"
+        android:id="@+id/textView_nurseInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="340dp"
         android:layout_marginTop="10dp"
+        android:onClick="nurseInfo"
         android:text="Angel486"
         android:textColor="@color/colorGray"
         android:textSize="14sp" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/imageView_nurse"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginLeft="340dp"
         android:layout_marginTop="30dp"
         android:layout_weight="1"
+        android:onClick="nurseInfo"
         app:srcCompat="@drawable/profile" />
 
     <TextView

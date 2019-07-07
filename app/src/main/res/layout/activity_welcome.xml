@@ -21,6 +21,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="320dp"
+            android:onClick="nurseInfo"
             android:text="Angel486"
             android:textColor="#FFFFFF"
             android:textSize="14sp" />
@@ -43,11 +44,12 @@
             android:textSize="24sp" />
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/imageView_nurse"
             android:layout_width="wrap_content"
             android:layout_height="60dp"
             android:layout_marginLeft="20dp"
             android:layout_weight="1"
+            android:onClick="nurseInfo"
             app:srcCompat="@drawable/profile" />
     </LinearLayout>
 
