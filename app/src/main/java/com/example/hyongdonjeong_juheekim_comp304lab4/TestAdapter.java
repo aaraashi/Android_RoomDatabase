@@ -39,8 +39,7 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.TestHolder> {
         holder.textViewTemp.setText("Temp.: " + (currentTest.getTemperature()));
         holder.textViewWeight.setText("Weight: " + (currentTest.getWeight()));
         holder.textViewHeight.setText("Height: " + (currentTest.getHeight()));
-        holder.textViewESL.setText("ESL: " + (currentTest.getESL()));
-        holder.textViewESR.setText("ESR: " + (currentTest.getESR()));
+
     }
 
     @Override
@@ -66,8 +65,7 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.TestHolder> {
         private TextView textViewTemp;
         private TextView textViewWeight;
         private TextView textViewHeight;
-        private TextView textViewESL;
-        private TextView textViewESR;
+
 
         public TestHolder(View itemView) {
             super(itemView);
@@ -79,8 +77,7 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.TestHolder> {
             textViewTemp = itemView.findViewById(R.id.textView_t_temp);
             textViewWeight = itemView.findViewById(R.id.textView_t_weight);
             textViewHeight = itemView.findViewById(R.id.textView_t_height);
-            textViewESL = itemView.findViewById(R.id.textView_t_ESL);
-            textViewESR = itemView.findViewById(R.id.textView_t_ESR);
+
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {

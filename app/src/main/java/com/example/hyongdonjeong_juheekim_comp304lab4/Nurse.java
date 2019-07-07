@@ -1,23 +1,25 @@
 package com.example.hyongdonjeong_juheekim_comp304lab4;
 
 
+import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity
 public class Nurse {
-    @PrimaryKey(autoGenerate = true)
-    private int nurseId;
+    @PrimaryKey
+    @NonNull
+    private String nurseId;
     private String firstname;
     private String lastname;
     private String department;
     private String password;
 
-    public int getNurseId() {
+    public String getNurseId() {
         return nurseId;
     }
 
-    public void setNurseId(int nurseId) {
+    public void setNurseId(String nurseId) {
         this.nurseId = nurseId;
     }
 

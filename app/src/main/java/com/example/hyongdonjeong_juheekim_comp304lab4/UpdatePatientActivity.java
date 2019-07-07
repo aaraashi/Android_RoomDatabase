@@ -6,6 +6,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -17,6 +18,7 @@ import java.util.List;
 
 public class UpdatePatientActivity extends AppCompatActivity {
 
+    private TextView tvNurseInfo;
     private PatientViewModel patientViewModel;
     private PatientDao patientDao;
     private AppDatabase appDatabase;
@@ -35,6 +37,11 @@ public class UpdatePatientActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_patient);
+
+        // display nurse information: first name (id)
+        tvNurseInfo = (TextView) findViewById(R.id.textView_nurseInfo);
+        SharedPreferences nursePreference = getSharedPreferences("NursePref", MODE_PRIVATE);
+        tvNurseInfo.setText(nursePreference.getString("nurseIdString",""));
 
         patientViewModel = ViewModelProviders.of(this).get(PatientViewModel.class);
         patient = new Patient();
@@ -85,7 +92,7 @@ public class UpdatePatientActivity extends AppCompatActivity {
         patient.setFirstname(editText_fname.getText().toString());
         patient.setLastname(editText_lname.getText().toString());
         patient.setDepartment(editText_p_dept.getText().toString());
-        patient.setNurseId(Integer.parseInt(editText_p_nurse.getText().toString()));
+        patient.setNurseId(editText_p_nurse.getText().toString());
         patient.setRoom(editText_p_room.getText().toString());
 
         if (intent.hasExtra(EXTRA_ID)) {
@@ -99,6 +106,11 @@ public class UpdatePatientActivity extends AppCompatActivity {
             patientViewModel.insert(patient);
             displayToast("The patient information has been saved!");
         }
+    }
+
+    public void nurseInfo (View v){
+        Intent intent = new Intent(UpdatePatientActivity.this, UpdateNurseActivity.class );
+        startActivity(intent);
     }
 
     public void deletePatient (View v){

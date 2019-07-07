@@ -14,7 +14,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 public abstract class AppDatabase extends RoomDatabase {
 
     private static volatile AppDatabase INSTANCE;
-    private static final String DATABASE_NAME = "Patient";
+    private static final String DATABASE_NAME = "PatientDB.db";
     public abstract NurseDao nurseDao();
     public abstract PatientDao patientDao();
     public abstract TestDao testDao();
@@ -24,6 +24,7 @@ public abstract class AppDatabase extends RoomDatabase {
             //Create database object
             INSTANCE = Room.databaseBuilder(context,
                     AppDatabase.class, DATABASE_NAME).addCallback(roomCallback).build();
+//                AppDatabase.class, DATABASE_NAME).fallbackToDestructiveMigration().addCallback(roomCallback).build();
             //populateData();
         }
         return INSTANCE;
@@ -51,11 +52,11 @@ public abstract class AppDatabase extends RoomDatabase {
 
         @Override
         protected Void doInBackground(Void... voids) {
-            patientDao.insert(new Patient(patient.getPatientId(), "Chalie", "Mack", "Gen", 200, "301"));
-            patientDao.insert(new Patient(patient.getPatientId(),"Kate", "Lynn", "Gen", 200, "202"));
-            patientDao.insert(new Patient(patient.getPatientId(),"Jason", "Kim", "Eem", 400, "502"));
-            testDao.insert(new Test(test.getTestId(), 2, 200, 80, 120, 35.2, 6.2, 7.1, 0.9, 0.8));
-            testDao.insert(new Test(test.getTestId(),3, 200, 80, 120, 35.2, 6.2, 7.1, 0.9, 0.8));
+            patientDao.insert(new Patient(patient.getPatientId(), "Chalie", "Mack", "Gen", "n200", "301"));
+            patientDao.insert(new Patient(patient.getPatientId(),"Kate", "Lynn", "Gen", "n200", "202"));
+            patientDao.insert(new Patient(patient.getPatientId(),"Jason", "Kim", "Eem", "n400", "502"));
+//            testDao.insert(new Test(test.getTestId(), 2, "n200", 80, 120, 35.2, 6.2, 7.1));
+//            testDao.insert(new Test(test.getTestId(), 3, "n200", 80, 120, 35.2, 6.2, 7.1));
             return null;
         }
 

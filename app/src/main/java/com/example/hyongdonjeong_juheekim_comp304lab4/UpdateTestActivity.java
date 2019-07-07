@@ -7,19 +7,23 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
 
 public class UpdateTestActivity extends AppCompatActivity {
 
+    private TextView tvNurseInfo;
     private TestViewModel testViewModel;
     private TestDao TestDao;
     private AppDatabase appDatabase;
-    public static EditText editText_t_patient, editText_t_nusre, editText_bpl, editText_bph, editText_temp, editText_weight, editText_height, editText_esl, editText_esr;
+    public static TextView textView_t_patient;
+    public static EditText editText_t_nusre, editText_bpl, editText_bph, editText_temp, editText_weight, editText_height, editText_esl, editText_esr;
     Test test;
     Intent intent;
 
@@ -31,8 +35,6 @@ public class UpdateTestActivity extends AppCompatActivity {
     public static final String EXTRA_TEMP = "hyongdonjeong_juheekim_comp304lab4.EXTRA_TEMP";
     public static final String EXTRA_WEIGHT = "hyongdonjeong_juheekim_comp304lab4.EXTRA_WEIGHT";
     public static final String EXTRA_HEIGHT = "hyongdonjeong_juheekim_comp304lab4.EXTRA_HEIGHT";
-    public static final String EXTRA_ESL = "hyongdonjeong_juheekim_comp304lab4.EXTRA_ESL";
-    public static final String EXTRA_ESR = "hyongdonjeong_juheekim_comp304lab4.EXTRA_ESR";
 
     
     @Override
@@ -40,33 +42,38 @@ public class UpdateTestActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_test);
 
+        // display nurse information: first name (id)
+        tvNurseInfo = (TextView) findViewById(R.id.textView_nurseInfo);
+        SharedPreferences nursePreference = getSharedPreferences("NursePref", MODE_PRIVATE);
+        tvNurseInfo.setText(nursePreference.getString("nurseIdString",""));
+
         testViewModel = ViewModelProviders.of(this).get(TestViewModel.class);
         test = new Test();
 
-        editText_t_patient = findViewById(R.id.editText_t_patientId);
+        textView_t_patient = findViewById(R.id.testView_t_patientId);
         editText_t_nusre = findViewById(R.id.editText_t_nurseId);
         editText_bpl = findViewById(R.id.editText_t_BPL);
         editText_bph = findViewById(R.id.editText_t_BPH);
         editText_temp = findViewById(R.id.editText_t_temp);
         editText_weight = findViewById(R.id.editText_t_weight);
         editText_height = findViewById(R.id.editText_t_height);
-        editText_esl = findViewById(R.id.editText_t_ESL);
-        editText_esr = findViewById(R.id.editText_t_ESR);
 
         intent = getIntent();
 
         if (intent.hasExtra(EXTRA_TESTID)) {
 
-            editText_t_patient.setText(intent.getStringExtra(EXTRA_PATIENTID));
+            textView_t_patient.setText(intent.getStringExtra(EXTRA_PATIENTID));
             editText_t_nusre.setText(intent.getStringExtra(EXTRA_T_NURSEID));
             editText_bpl.setText(intent.getStringExtra(EXTRA_BPL));
             editText_bph.setText(intent.getStringExtra(EXTRA_BPH));
             editText_temp.setText(intent.getStringExtra(EXTRA_TEMP));
             editText_weight.setText(intent.getStringExtra(EXTRA_WEIGHT));
             editText_height.setText(intent.getStringExtra(EXTRA_HEIGHT));
-            editText_esl.setText(intent.getStringExtra(EXTRA_ESL));
-            editText_esr.setText(intent.getStringExtra(EXTRA_ESR));
-        }else {}
+        }else {
+            textView_t_patient.setText(intent.getStringExtra(EXTRA_PATIENTID));
+            editText_t_nusre.setText(nursePreference.getString("nurseIdString",""));
+
+        }
 
         testViewModel.getInsertResult().observe(this, new Observer<Integer>() {
             @Override
@@ -105,16 +112,13 @@ public class UpdateTestActivity extends AppCompatActivity {
 
     public void updateTest (View v){
 
-
-        test.setPatientId(Integer.parseInt(editText_t_patient.getText().toString()));
-        test.setNurseId(Integer.parseInt(editText_t_nusre.getText().toString()));
+        test.setPatientId(Integer.parseInt(textView_t_patient.getText().toString()));
+        test.setNurseId(editText_t_nusre.getText().toString());
         test.setBPL(Integer.parseInt(editText_bpl.getText().toString()));
         test.setBPH(Integer.parseInt(editText_bph.getText().toString()));
         test.setTemperature(Double.parseDouble(editText_temp.getText().toString()));
         test.setWeight(Double.parseDouble(editText_weight.getText().toString()));
         test.setHeight(Double.parseDouble(editText_height.getText().toString()));
-        test.setESL(Double.parseDouble(editText_esl.getText().toString()));
-        test.setESR(Double.parseDouble(editText_esr.getText().toString()));
 
         if (intent.hasExtra(EXTRA_TESTID)) {
         int id = getIntent().getIntExtra(EXTRA_TESTID, -1);
@@ -132,8 +136,6 @@ public class UpdateTestActivity extends AppCompatActivity {
 //        double temp = Double.parseDouble(editText_temp.getText().toString());
 //        double weight = Double.parseDouble(editText_weight.getText().toString());
 //        double height = Double.parseDouble(editText_height.getText().toString());
-//        double ESL = Double.parseDouble(editText_esl.getText().toString());
-//        double ESR = Double.parseDouble(editText_esr.getText().toString());
 
 //        if (intent.hasExtra(EXTRA_TESTID)) {
 //            Intent data = new Intent();
@@ -144,8 +146,6 @@ public class UpdateTestActivity extends AppCompatActivity {
 //            data.putExtra(EXTRA_TEMP, editText_temp.getText().toString());
 //            data.putExtra(EXTRA_WEIGHT, editText_weight.getText().toString());
 //            data.putExtra(EXTRA_HEIGHT, editText_height.getText().toString());
-//            data.putExtra(EXTRA_ESL, editText_esl.getText().toString());
-//            data.putExtra(EXTRA_ESR, editText_esr.getText().toString());
 
 //            data.putExtra(EXTRA_PATIENTID, patientId);
 //            data.putExtra(EXTRA_T_NURSEID, nurseId);
@@ -154,8 +154,6 @@ public class UpdateTestActivity extends AppCompatActivity {
 //            data.putExtra(EXTRA_TEMP, temp);
 //            data.putExtra(EXTRA_WEIGHT,weight);
 //            data.putExtra(EXTRA_HEIGHT,height);
-//            data.putExtra(EXTRA_ESL, ESL);
-//            data.putExtra(EXTRA_ESR, ESR);
 //
 //            int id = getIntent().getIntExtra(EXTRA_TESTID, -1);
 //            if (id != -1) {
@@ -167,6 +165,11 @@ public class UpdateTestActivity extends AppCompatActivity {
 //
 //        }
         displayToast("The test information has been saved!");
+    }
+
+    public void nurseInfo (View v){
+        Intent intent = new Intent(UpdateTestActivity.this, UpdateNurseActivity.class );
+        startActivity(intent);
     }
 
     public void deleteTest (View v) {

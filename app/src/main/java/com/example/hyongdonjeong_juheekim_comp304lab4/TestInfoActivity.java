@@ -23,12 +23,14 @@ public class TestInfoActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     public static final int ADD_TEST_REQUEST = 1;
     public static final int EDIT_TEST_REQUEST = 2;
-    
+
+    Intent intentGet;
+    public static final String EXTRA_PATIENTID = "hyongdonjeong_juheekim_comp304lab4.EXTRA_PATIENTID";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_info);
-
 
         recyclerView = findViewById(R.id.test_recycler_view);
         recyclerView.setHasFixedSize(true);
@@ -39,9 +41,7 @@ public class TestInfoActivity extends AppCompatActivity {
         // display nurse information: first name (id)
         tvNurseInfo = (TextView) findViewById(R.id.textView_nurseInfo);
         SharedPreferences nursePreference = getSharedPreferences("NursePref", MODE_PRIVATE);
-
-        tvNurseInfo.setText(nursePreference.getString("nurseNameString","")
-                + "(" + nursePreference.getString("nurseIdString","") + ")");
+        tvNurseInfo.setText(nursePreference.getString("nurseIdString",""));
 
         testViewModel = ViewModelProviders.of(this).get(TestViewModel.class);
         testViewModel.getAllTests().observe(this, new Observer<List<Test>>() {
@@ -51,7 +51,6 @@ public class TestInfoActivity extends AppCompatActivity {
             }
         });
 
-
         adapter.setOnItemClickListener(new TestAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(Test test) {
@@ -60,12 +59,11 @@ public class TestInfoActivity extends AppCompatActivity {
                 intent.putExtra(UpdateTestActivity.EXTRA_PATIENTID, String.valueOf(test.getPatientId()));
                 intent.putExtra(UpdateTestActivity.EXTRA_T_NURSEID, String.valueOf(test.getNurseId()));
                 intent.putExtra(UpdateTestActivity.EXTRA_BPL, String.valueOf(test.getBPL()));
-                intent.putExtra(UpdateTestActivity.EXTRA_BPH, String.valueOf(test.getNurseId()));
+                intent.putExtra(UpdateTestActivity.EXTRA_BPH, test.getNurseId());
                 intent.putExtra(UpdateTestActivity.EXTRA_TEMP, String.valueOf(test.getTemperature()));
                 intent.putExtra(UpdateTestActivity.EXTRA_WEIGHT, String.valueOf(test.getWeight()));
                 intent.putExtra(UpdateTestActivity.EXTRA_HEIGHT, String.valueOf(test.getHeight()));
-                intent.putExtra(UpdateTestActivity.EXTRA_ESL, String.valueOf(test.getESL()));
-                intent.putExtra(UpdateTestActivity.EXTRA_ESR, String.valueOf(test.getESR()));
+
                 startActivityForResult(intent, EDIT_TEST_REQUEST);
             }
         });
@@ -91,7 +89,10 @@ public class TestInfoActivity extends AppCompatActivity {
     }
 
     public void addNewTest (View v){
+        intentGet = getIntent();
         Intent intent = new Intent(TestInfoActivity.this, UpdateTestActivity.class );
+        intent.putExtra(UpdateTestActivity.EXTRA_PATIENTID, intentGet.getStringExtra(EXTRA_PATIENTID));
+
         startActivity(intent);
     }
 

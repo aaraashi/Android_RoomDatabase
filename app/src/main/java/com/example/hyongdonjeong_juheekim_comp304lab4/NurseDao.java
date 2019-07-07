@@ -20,10 +20,10 @@ public interface NurseDao {
     LiveData<List<Nurse>> getAllNurses();
 
     @Query("SELECT * FROM Nurse where nurseId= :nurseId and password= :password")
-    Nurse getNurse(int nurseId, String password);
+    Nurse getNurse(String nurseId, String password);
 
     @Query("SELECT * FROM Nurse where nurseId= :nurseId")
-    Nurse getNurse(int nurseId);
+    Nurse getNurse(String nurseId);
 
 //    @Query("SELECT * FROM Nurse WHERE NurseId IN(:nurseId)")
 //    public abstract List findByIds(int[] nurseId);

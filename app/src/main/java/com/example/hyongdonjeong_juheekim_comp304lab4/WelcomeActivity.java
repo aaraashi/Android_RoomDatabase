@@ -16,13 +16,11 @@ public class WelcomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
 
+        // display nurse information: first name (id)
         tvNurseInfo = (TextView) findViewById(R.id.textView_nurseInfo);
         tvWelcome = (TextView) findViewById(R.id.textView_welcome);
-
         SharedPreferences nursePreference = getSharedPreferences("NursePref", MODE_PRIVATE);
-
-        tvNurseInfo.setText(nursePreference.getString("nurseNameString","")
-                + "(" + nursePreference.getString("nurseIdString","") + ")");
+        tvNurseInfo.setText(nursePreference.getString("nurseIdString",""));
         tvWelcome.setText("Welcome " + nursePreference.getString("nurseNameString","") + "!");
 
     }
@@ -38,7 +36,7 @@ public class WelcomeActivity extends AppCompatActivity {
     }
 
     public void testInfo (View v){
-        Intent intent = new Intent(WelcomeActivity.this, TestInfoActivity.class );
+        Intent intent = new Intent(WelcomeActivity.this, TestPatientInfoActivity.class );
         startActivity(intent);
     }
 }

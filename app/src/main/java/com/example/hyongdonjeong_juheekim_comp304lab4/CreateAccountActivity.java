@@ -17,7 +17,8 @@ import java.util.List;
 
 public class CreateAccountActivity extends AppCompatActivity {
     private NurseViewModel nurseViewModel;
-    private EditText editText_fname, editText_lname, editText_password1, editText_password2, editText_dept;
+    private EditText editText_userid, editText_password1, editText_password2;
+    private EditText editText_fname, editText_lname, editText_dept;
     private Button button_submit;
     Nurse nurse;
 
@@ -45,6 +46,7 @@ public class CreateAccountActivity extends AppCompatActivity {
         button_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                editText_userid = findViewById(R.id.editText_userid);
                 editText_fname = findViewById(R.id.editText_fname);
                 editText_lname = findViewById(R.id.editText_lname);
                 editText_password1 = findViewById(R.id.editText_password1);
@@ -52,6 +54,7 @@ public class CreateAccountActivity extends AppCompatActivity {
                 editText_dept = findViewById(R.id.editText_dept);
 
                 if (editText_password1.getText().toString().equals(editText_password2.getText().toString())){
+                    nurse.setNurseId(editText_userid.getText().toString());
                     nurse.setFirstname(editText_fname.getText().toString());
                     nurse.setLastname(editText_lname.getText().toString());
                     nurse.setPassword(editText_password1.getText().toString());

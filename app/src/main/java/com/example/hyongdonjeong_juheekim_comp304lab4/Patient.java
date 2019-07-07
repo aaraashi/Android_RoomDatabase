@@ -10,13 +10,13 @@ public class Patient {
     private String firstname;
     private String lastname;
     private String department;
-    private int nurseId;
+    private String nurseId;
     private String room;
 
     public Patient() {
     }
 
-    public Patient(int patientId, String firstname, String lastname, String department, int nurseId, String room) {
+    public Patient(int patientId, String firstname, String lastname, String department, String nurseId, String room) {
         this.patientId = patientId;
         this.firstname = firstname;
         this.lastname = lastname;
@@ -58,11 +58,11 @@ public class Patient {
         this.department = department;
     }
 
-    public int getNurseId() {
+    public String getNurseId() {
         return nurseId;
     }
 
-    public void setNurseId(int nurseId) {
+    public void setNurseId(String nurseId) {
         this.nurseId = nurseId;
     }
 

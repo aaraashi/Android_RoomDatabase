@@ -9,17 +9,14 @@ public class Test {
     @PrimaryKey(autoGenerate = true)
     private int testId;
     private int patientId;
-    private int nurseId;
+    private String nurseId;
     private int BPL;
     private int BPH;
     private double temperature;
     private double weight;
     private double  height;
-    // eye sight left and right
-    private double ESL;
-    private double ESR;
 
-    public Test(int testId, int patientId, int nurseId, int BPL, int BPH, double temperature, double weight, double height, double ESL, double ESR) {
+    public Test(int testId, int patientId, String nurseId, int BPL, int BPH, double temperature, double weight, double height, double ESL, double ESR) {
         this.testId = testId;
         this.patientId = patientId;
         this.nurseId = nurseId;
@@ -28,8 +25,6 @@ public class Test {
         this.temperature = temperature;
         this.weight = weight;
         this.height = height;
-        this.ESL = ESL;
-        this.ESR = ESR;
     }
 
     public Test() {
@@ -52,11 +47,11 @@ public class Test {
         this.patientId = patientId;
     }
 
-    public int getNurseId() {
+    public String getNurseId() {
         return nurseId;
     }
 
-    public void setNurseId(int nurseId) {
+    public void setNurseId(String nurseId) {
         this.nurseId = nurseId;
     }
 
@@ -100,19 +95,4 @@ public class Test {
         this.height = height;
     }
 
-    public double getESL() {
-        return ESL;
-    }
-
-    public void setESL(double ESL) {
-        this.ESL = ESL;
-    }
-
-    public double getESR() {
-        return ESR;
-    }
-
-    public void setESR(double ESR) {
-        this.ESR = ESR;
-    }
 }

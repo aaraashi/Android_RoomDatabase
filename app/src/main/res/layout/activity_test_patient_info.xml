@@ -36,7 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="140dp"
         android:fontFamily="helvetica"
-        android:text="@string/patient_info"
+        android:text="@string/patient_test_info"
         android:textAlignment="center"
         android:textColor="@color/colorGray"
         android:textSize="32sp"

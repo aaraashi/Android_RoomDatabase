@@ -9,12 +9,12 @@
     tools:context=".UpdatePatientActivity">
 
     <TextView
-        android:id="@+id/textview_account"
+        android:id="@+id/textView_nurseInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:layout_marginLeft="320dp"
         android:layout_marginEnd="8dp"
+        android:onClick="nurseInfo"
         android:text="Angel486"
         android:textColor="@color/colorWhite"
         android:textSize="14sp"
@@ -22,12 +22,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/imageView_nurse"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="8dp"
         android:layout_weight="1"
+        android:onClick="nurseInfo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/profile" />

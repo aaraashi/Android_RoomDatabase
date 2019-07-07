@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        db = Room.databaseBuilder(this, AppDatabase.class, "Patient")
+        db = Room.databaseBuilder(this, AppDatabase.class, "PatientDB.db")
                 .allowMainThreadQueries()
                 .build();
         nurseDao = db.nurseDao();
@@ -41,8 +41,8 @@ public class MainActivity extends AppCompatActivity {
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            try {
-                                Nurse nurse = nurseDao.getNurse(Integer.parseInt(etNurseId.getText().toString()), etPassword.getText().toString());
+//                            try {
+                                Nurse nurse = nurseDao.getNurse(etNurseId.getText().toString(), etPassword.getText().toString());
                                 if(nurse!=null){
 
                                     SharedPreferences nursePreference = getSharedPreferences("NursePref", MODE_PRIVATE);
@@ -58,10 +58,10 @@ public class MainActivity extends AppCompatActivity {
                                 }else{
                                     Toast.makeText(MainActivity.this, "Unregistered user, or incorrect", Toast.LENGTH_SHORT).show();
                                 }
-                            } catch (Exception e){
-
-                                Toast.makeText(MainActivity.this, "Nurser ID should be number.", Toast.LENGTH_SHORT).show();
-                            }
+//                            } catch (Exception e){
+//
+//                                Toast.makeText(MainActivity.this, "Nurser ID should be number.", Toast.LENGTH_SHORT).show();
+//                            }
                         }
                     }, 1000);
 

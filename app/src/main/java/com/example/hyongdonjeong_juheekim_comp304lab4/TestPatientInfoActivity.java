@@ -23,9 +23,9 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PatientInfoActivity extends AppCompatActivity {
+public class TestPatientInfoActivity extends AppCompatActivity {
 
-    private TextView tvNurseInfo;
+    private TextView tvNurseInfo, textView_col1;
     private PatientViewModel patientViewModel;
     private RecyclerView recyclerView;
     public static final int ADD_PATIENT_REQUEST = 1;
@@ -36,8 +36,10 @@ public class PatientInfoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_info);
 
-        // display nurse information: first name (id)
         tvNurseInfo = (TextView) findViewById(R.id.textView_nurseInfo);
+        textView_col1 = (TextView) findViewById(R.id.textView_col1);
+
+        // display nurse information: first name (id)
         SharedPreferences nursePreference = getSharedPreferences("NursePref", MODE_PRIVATE);
         tvNurseInfo.setText(nursePreference.getString("nurseIdString",""));
 
@@ -55,16 +57,12 @@ public class PatientInfoActivity extends AppCompatActivity {
             }
         });
 
+        // transfer patient ID to TestInfoActivity
         adapter.setOnItemClickListener(new PatientAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(Patient patient) {
-                Intent intent = new Intent(PatientInfoActivity.this, UpdatePatientActivity.class);
-                intent.putExtra(UpdatePatientActivity.EXTRA_ID, patient.getPatientId());
-                intent.putExtra(UpdatePatientActivity.EXTRA_FNAME, patient.getFirstname());
-                intent.putExtra(UpdatePatientActivity.EXTRA_LNAME, patient.getLastname());
-                intent.putExtra(UpdatePatientActivity.EXTRA_NURSEID, patient.getNurseId());
-                intent.putExtra(UpdatePatientActivity.EXTRA_DEPT, patient.getDepartment());
-                intent.putExtra(UpdatePatientActivity.EXTRA_ROOM, patient.getRoom());
+                Intent intent = new Intent(TestPatientInfoActivity.this, TestInfoActivity.class);
+                intent.putExtra(TestInfoActivity.EXTRA_PATIENTID, String.valueOf(patient.getPatientId()));
                 startActivityForResult(intent, EDIT_PATIENT_REQUEST);
             }
         });
@@ -72,12 +70,12 @@ public class PatientInfoActivity extends AppCompatActivity {
 
 
     public void nurseInfo (View v){
-        Intent intent = new Intent(PatientInfoActivity.this, UpdateNurseActivity.class );
+        Intent intent = new Intent(TestPatientInfoActivity.this, UpdateNurseActivity.class );
         startActivity(intent);
     }
 
     public void addNewPatient (View v){
-        Intent intent = new Intent(PatientInfoActivity.this, UpdatePatientActivity.class );
+        Intent intent = new Intent(TestPatientInfoActivity.this, UpdatePatientActivity.class );
         startActivity(intent);
     }
 }

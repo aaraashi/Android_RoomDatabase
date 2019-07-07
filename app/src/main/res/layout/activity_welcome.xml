@@ -20,6 +20,7 @@
             android:id="@+id/textView_nurseInfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             android:layout_marginLeft="320dp"
             android:onClick="nurseInfo"
             android:text="Angel486"
