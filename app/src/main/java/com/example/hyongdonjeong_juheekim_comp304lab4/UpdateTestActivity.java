@@ -86,29 +86,7 @@ public class UpdateTestActivity extends AppCompatActivity {
             }
         });
 
-//        testViewModel.getAllTests().observe(this, new Observer<List<Test>>() {
-//            @Override
-//            public void onChanged(@Nullable List<Test> result) {
-//                String output = "";
-//                for (Test Test : result) {
-//                    //output += Test.getFirstname() + "\n";
-//                }
-//                //textViewDisplay.setText(output);
-//            }
-//        });
-
-        testViewModel.getInsertResult().observe(this, new Observer<Integer>() {
-            @Override
-            public void onChanged(@Nullable Integer result) {
-                if (result == 1) {
-                    Toast.makeText(UpdateTestActivity.this, "Test successfully saved", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(UpdateTestActivity.this, "Error saving Test", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
     }
-
 
     public void updateTest (View v){
 
@@ -121,50 +99,19 @@ public class UpdateTestActivity extends AppCompatActivity {
         test.setHeight(Double.parseDouble(editText_height.getText().toString()));
 
         if (intent.hasExtra(EXTRA_TESTID)) {
-        int id = getIntent().getIntExtra(EXTRA_TESTID, -1);
-        test.setTestId(id);
-        testViewModel.update(test);
-    }
+            int id = getIntent().getIntExtra(EXTRA_TESTID, -1);
+            test.setTestId(id);
+            testViewModel.update(test);
+        }
         else {
-        testViewModel.insert(test);
-    }
+            testViewModel.insert(test);
+        }
 
-//        int patientId = Integer.parseInt(editText_t_patient.getText().toString());
-//        int nurseId = Integer.parseInt(editText_t_nusre.getText().toString());
-//        int BPL = Integer.parseInt(editText_bpl.getText().toString());
-//        int BPH = Integer.parseInt(editText_bph.getText().toString());
-//        double temp = Double.parseDouble(editText_temp.getText().toString());
-//        double weight = Double.parseDouble(editText_weight.getText().toString());
-//        double height = Double.parseDouble(editText_height.getText().toString());
-
-//        if (intent.hasExtra(EXTRA_TESTID)) {
-//            Intent data = new Intent();
-//            data.putExtra(EXTRA_PATIENTID, editText_t_patient.getText().toString());
-//            data.putExtra(EXTRA_T_NURSEID, editText_t_nusre.getText().toString());
-//            data.putExtra(EXTRA_BPL, editText_bpl.getText().toString());
-//            data.putExtra(EXTRA_BPH, editText_bph.getText().toString());
-//            data.putExtra(EXTRA_TEMP, editText_temp.getText().toString());
-//            data.putExtra(EXTRA_WEIGHT, editText_weight.getText().toString());
-//            data.putExtra(EXTRA_HEIGHT, editText_height.getText().toString());
-
-//            data.putExtra(EXTRA_PATIENTID, patientId);
-//            data.putExtra(EXTRA_T_NURSEID, nurseId);
-//            data.putExtra(EXTRA_BPL, BPL);
-//            data.putExtra(EXTRA_BPH, BPH);
-//            data.putExtra(EXTRA_TEMP, temp);
-//            data.putExtra(EXTRA_WEIGHT,weight);
-//            data.putExtra(EXTRA_HEIGHT,height);
-//
-//            int id = getIntent().getIntExtra(EXTRA_TESTID, -1);
-//            if (id != -1) {
-//                data.putExtra(EXTRA_TESTID, id);
-//            }
-//
-//            setResult(RESULT_OK, data);
-//            finish();
-//
-//        }
         displayToast("The test information has been saved!");
+
+        Intent intent = new Intent(UpdateTestActivity.this, TestInfoActivity.class );
+        startActivity(intent);
+
     }
 
     public void nurseInfo (View v){
@@ -177,11 +124,15 @@ public class UpdateTestActivity extends AppCompatActivity {
         int id = getIntent().getIntExtra(EXTRA_TESTID, -1);
         test.setTestId(id);
         testViewModel.delete(test);
-        Toast.makeText(UpdateTestActivity.this, "Test deleted", Toast.LENGTH_SHORT).show();
+        displayToast("Test deleted!");
+
+        Intent intent = new Intent(UpdateTestActivity.this, TestInfoActivity.class );
+        startActivity(intent);
+
     }
 
     public void displayToast(String message){
-        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+        Toast.makeText(UpdateTestActivity.this, message, Toast.LENGTH_LONG).show();
     }
 
 }

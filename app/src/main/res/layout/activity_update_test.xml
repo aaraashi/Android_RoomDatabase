@@ -205,49 +205,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText_t_weight" />
 
-    <EditText
-        android:id="@+id/editText_t_ESL"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/edittext_stroke"
-        android:ems="8"
-        android:inputType="textNoSuggestions"
-        android:paddingLeft="5dp"
-        android:paddingTop="5dp"
-        android:paddingRight="5dp"
-        android:paddingBottom="5dp"
-        android:hint="ESL"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText_t_height" />
-
-    <EditText
-        android:id="@+id/editText_t_ESR"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/edittext_stroke"
-        android:ems="8"
-        android:inputType="textNoSuggestions"
-        android:paddingLeft="5dp"
-        android:paddingTop="5dp"
-        android:paddingRight="5dp"
-        android:paddingBottom="5dp"
-        android:hint="ESR"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText_t_ESL" />
-
-
     <TextView
         android:id="@+id/textView_t_up_1"
         android:layout_width="wrap_content"
@@ -324,29 +281,6 @@
         android:textSize="18sp"
         app:layout_constraintEnd_toStartOf="@+id/editText_t_height"
         app:layout_constraintTop_toBottomOf="@+id/textView_t_up_6" />
-
-    <TextView
-        android:id="@+id/textView_t_up_8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
-        android:layout_marginEnd="16dp"
-        android:text="ESL"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/editText_t_ESL"
-        app:layout_constraintTop_toBottomOf="@+id/textView_t_up_7" />
-
-    <TextView
-        android:id="@+id/textView_t_up_9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
-        android:layout_marginEnd="16dp"
-        android:text="ESR"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/editText_t_ESR"
-        app:layout_constraintTop_toBottomOf="@+id/textView_t_up_8" />
-
 
     <Button
         android:id="@+id/button_update"

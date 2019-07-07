@@ -48,7 +48,11 @@ public class MainActivity extends AppCompatActivity {
                                     SharedPreferences nursePreference = getSharedPreferences("NursePref", MODE_PRIVATE);
                                     SharedPreferences.Editor prefEditor = nursePreference.edit();
                                     prefEditor.putString("nurseIdString",etNurseId.getText().toString());
-                                    prefEditor.putString("nurseNameString", nurse.getFirstname());
+                                    prefEditor.putString("nurseIdString", nurse.getNurseId());
+                                    prefEditor.putString("nurseFNameString", nurse.getFirstname());
+                                    prefEditor.putString("nurseLNameString", nurse.getLastname());
+                                    prefEditor.putString("nursePasswordString", nurse.getPassword());
+                                    prefEditor.putString("nurseDeptString", nurse.getDepartment());
                                     prefEditor.commit();
 
                                     Intent intent = new Intent(MainActivity.this, WelcomeActivity.class );

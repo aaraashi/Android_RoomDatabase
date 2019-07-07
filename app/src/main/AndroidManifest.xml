@@ -9,14 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".TestPatientInfoActivity"></activity>
+        <activity android:name=".TestPatientInfoActivity" />
         <activity android:name=".UpdateNurseActivity" />
         <activity android:name=".WelcomeActivity" />
         <activity android:name=".UpdateTestActivity" />
         <activity android:name=".TestInfoActivity" />
         <activity android:name=".UpdatePatientActivity" />
         <activity android:name=".PatientInfoActivity" />
-        <activity android:name=".Main2Activity" />
         <activity android:name=".CreateAccountActivity" />
         <activity android:name=".DatabaseExActivity" />
         <activity android:name=".MainActivity">

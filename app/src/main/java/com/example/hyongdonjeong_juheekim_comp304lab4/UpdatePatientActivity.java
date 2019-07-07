@@ -68,22 +68,13 @@ public class UpdatePatientActivity extends AppCompatActivity {
             public void onChanged(@Nullable Integer result) {
                 if (result == 1) {
                     Toast.makeText(UpdatePatientActivity.this, "Patient successfully saved", Toast.LENGTH_SHORT).show();
+
                 } else {
                     Toast.makeText(UpdatePatientActivity.this, "Error saving patient", Toast.LENGTH_SHORT).show();
                 }
             }
         });
 
-//        patientViewModel.getAllPatient().observe(this, new Observer<List<Patient>>() {
-//            @Override
-//            public void onChanged(@Nullable List<Patient> result) {
-//                String output = "";
-//                for (Patient patient : result) {
-//                    output += patient.getFirstname() + "\n";
-//                }
-//                //textViewDisplay.setText(output);
-//            }
-//        });
     }
 
 
@@ -106,6 +97,10 @@ public class UpdatePatientActivity extends AppCompatActivity {
             patientViewModel.insert(patient);
             displayToast("The patient information has been saved!");
         }
+
+        Intent intent = new Intent(UpdatePatientActivity.this, PatientInfoActivity.class );
+        startActivity(intent);
+
     }
 
     public void nurseInfo (View v){
@@ -118,7 +113,10 @@ public class UpdatePatientActivity extends AppCompatActivity {
         int id = getIntent().getIntExtra(EXTRA_ID, -1);
         patient.setPatientId(id);
         patientViewModel.delete(patient);
-        displayToast("Test deleted");
+        displayToast("Patient deleted");
+
+        Intent intent = new Intent(UpdatePatientActivity.this, PatientInfoActivity.class );
+        startActivity(intent);
 
     }
 

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/main_background"
-    tools:context=".CreateAccountActivity">
+    tools:context=".UpdateNurseActivity">
 
     <TextView
         android:id="@+id/textView3"
@@ -162,6 +162,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/button_forward"
+        android:onClick="updateNurse"
         android:paddingLeft="30dp"
         android:paddingRight="30dp"
         android:text="Update"

@@ -24,6 +24,8 @@ public class NurseViewModel extends AndroidViewModel {
 
     public void insert(Nurse nurse) { nurseRepository.insert(nurse); }
 
+    public void update(Nurse nurse) { nurseRepository.update(nurse); }
+
     public LiveData<Integer> getInsertResult() { return insertResult; }
 
     LiveData<List<Nurse>> getAllNurses() { return allNurses; }
