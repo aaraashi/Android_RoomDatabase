@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">DesignApplication</string>
+    <string name="app_name">Centennial Clinic PM</string>
     <string name="main_title">
         Centennial Clinic \nPatient Management</string>
     <string name="find_pw"><u>Forgot Password</u></string>

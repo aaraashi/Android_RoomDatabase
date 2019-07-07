@@ -10,11 +10,11 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-@Database(entities = {Nurse.class, Patient.class, Test.class},version =1)
+@Database(entities = {Nurse.class, Patient.class, Test.class},version =1, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
 
     private static volatile AppDatabase INSTANCE;
-    private static final String DATABASE_NAME = "PatientTestDB";
+    private static final String DATABASE_NAME = "Patient";
     public abstract NurseDao nurseDao();
     public abstract PatientDao patientDao();
     public abstract TestDao testDao();
@@ -23,7 +23,7 @@ public abstract class AppDatabase extends RoomDatabase {
         if (INSTANCE == null) {
             //Create database object
             INSTANCE = Room.databaseBuilder(context,
-                    AppDatabase.class, "Patient").addCallback(roomCallback).build();
+                    AppDatabase.class, DATABASE_NAME).addCallback(roomCallback).build();
             //populateData();
         }
         return INSTANCE;

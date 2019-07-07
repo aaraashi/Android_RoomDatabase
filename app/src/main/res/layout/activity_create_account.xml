@@ -66,25 +66,25 @@
 
         <EditText
             android:id="@+id/editText_fname"
-            android:layout_width="wrap_content"
+            android:layout_width="280dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="32dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
             android:background="@drawable/edittext_stroke"
             android:ems="10"
+            android:hint="FirstName"
             android:inputType="textPersonName"
             android:paddingLeft="5dp"
             android:paddingTop="5dp"
             android:paddingRight="5dp"
             android:paddingBottom="5dp"
-            android:text="FirstName"
             android:textSize="18sp" />
 
         <EditText
             android:id="@+id/editText_lname"
-            android:layout_width="wrap_content"
+            android:layout_width="280dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
@@ -97,30 +97,12 @@
             android:paddingTop="5dp"
             android:paddingRight="5dp"
             android:paddingBottom="5dp"
-            android:text="LastName"
+            android:hint="LastName"
             android:textSize="18sp" />
 
         <EditText
-            android:id="@+id/editText_username_signUp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
-            android:background="@drawable/edittext_stroke"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:paddingLeft="5dp"
-            android:paddingTop="5dp"
-            android:paddingRight="5dp"
-            android:paddingBottom="5dp"
-            android:text="UserName"
-            android:textSize="18sp" />
-
-        <EditText
-            android:id="@+id/editText_password_signUp"
-            android:layout_width="wrap_content"
+            android:id="@+id/editText_password1"
+            android:layout_width="280dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
@@ -132,12 +114,31 @@
             android:paddingTop="5dp"
             android:paddingRight="5dp"
             android:paddingBottom="5dp"
-            android:text="Password"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/editText_password2"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/edittext_stroke"
+            android:ems="10"
+            android:paddingLeft="5dp"
+            android:paddingTop="5dp"
+            android:paddingRight="5dp"
+            android:paddingBottom="5dp"
+            android:hint="Password Confirm"
+            android:inputType="textPassword"
             android:textSize="18sp" />
 
         <EditText
             android:id="@+id/editText_dept"
-            android:layout_width="wrap_content"
+            android:layout_width="280dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
@@ -149,7 +150,7 @@
             android:paddingTop="5dp"
             android:paddingRight="5dp"
             android:paddingBottom="5dp"
-            android:text="Department"
+            android:hint="Department"
             android:textSize="18sp" />
     </LinearLayout>
 

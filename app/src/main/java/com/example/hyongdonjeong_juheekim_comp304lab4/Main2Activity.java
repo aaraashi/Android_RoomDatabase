@@ -17,7 +17,7 @@ import java.util.List;
 public class Main2Activity extends AppCompatActivity {
     private NurseViewModel nurseViewModel;
     private Button btnInsert;
-    private EditText editTextName;
+    private EditText editTextName, editTextPassword;
     private TextView textViewDisplay;
     Nurse nurse;
 
@@ -48,7 +48,7 @@ public class Main2Activity extends AppCompatActivity {
             public void onChanged(@Nullable List<Nurse> result) {
                 String output="";
                 for(Nurse nurse : result){
-                    output+= nurse.getFirstname() + "\n";
+                    output+= nurse.getFirstname() +":"+ nurse.getPassword() + "\n";
                 }
                 textViewDisplay.setText(output);
             }
@@ -59,7 +59,10 @@ public class Main2Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 editTextName = findViewById(R.id.editTextName);
+                editTextPassword = findViewById(R.id.editTextPassword);
+
                 nurse.setFirstname(editTextName.getText().toString());
+                nurse.setPassword(editTextPassword.getText().toString());
                 nurseViewModel.insert(nurse);
             }
         });
