@@ -61,6 +61,7 @@ public class UpdatePatientActivity extends AppCompatActivity {
             editText_p_dept.setText(intent.getStringExtra(EXTRA_DEPT));
             editText_p_room.setText(intent.getStringExtra(EXTRA_ROOM));
         } else {
+            editText_p_nurse.setText(nursePreference.getString("nurseIdString",""));
         }
 
         patientViewModel.getInsertResult().observe(this, new Observer<Integer>() {
