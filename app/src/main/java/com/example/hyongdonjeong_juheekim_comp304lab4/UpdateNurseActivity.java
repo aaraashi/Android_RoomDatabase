@@ -17,6 +17,7 @@ public class UpdateNurseActivity extends AppCompatActivity {
     private NurseViewModel nurseViewModel;
     private NurseDao nurseDao;
     private AppDatabase appDatabase;
+    private TextView textView_id;
     public static EditText editText_fname, editText_lname, editText_password1, editText_password2, editText_dept;
     Nurse nurse;
 
@@ -28,6 +29,7 @@ public class UpdateNurseActivity extends AppCompatActivity {
         nurseViewModel = ViewModelProviders.of(this).get(NurseViewModel.class);
         nurse = new Nurse();
 
+        textView_id = findViewById(R.id.textView_userid);
         editText_fname = findViewById(R.id.editText_fname);
         editText_lname = findViewById(R.id.editText_lname);
         editText_password1 = findViewById(R.id.editText_password1);
@@ -36,6 +38,7 @@ public class UpdateNurseActivity extends AppCompatActivity {
 
         // display nurse information: first name (id)
         SharedPreferences nursePreference = getSharedPreferences("NursePref", MODE_PRIVATE);
+        textView_id.setText(nursePreference.getString("nurseIdString",""));
         editText_fname.setText(nursePreference.getString("nurseFNameString",""));
         editText_lname.setText(nursePreference.getString("nurseLNameString",""));
         editText_dept.setText(nursePreference.getString("nurseDeptString",""));

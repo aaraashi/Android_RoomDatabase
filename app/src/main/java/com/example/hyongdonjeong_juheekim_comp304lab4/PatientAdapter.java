@@ -43,6 +43,10 @@ public class PatientAdapter extends RecyclerView.Adapter<PatientAdapter.PatientH
         notifyDataSetChanged();
     }
 
+    public Patient getPatientsAt(int position) {
+        return patients.get(position);
+    }
+
     class PatientHolder extends RecyclerView.ViewHolder {
         private TextView textViewPatientId;
         private TextView textViewFirstName;

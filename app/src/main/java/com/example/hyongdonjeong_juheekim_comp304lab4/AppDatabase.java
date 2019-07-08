@@ -52,9 +52,9 @@ public abstract class AppDatabase extends RoomDatabase {
 
         @Override
         protected Void doInBackground(Void... voids) {
-            patientDao.insert(new Patient(patient.getPatientId(), "Chalie", "Mack", "Gen", "n200", "301"));
-            patientDao.insert(new Patient(patient.getPatientId(),"Kate", "Lynn", "Gen", "n200", "202"));
-            patientDao.insert(new Patient(patient.getPatientId(),"Jason", "Kim", "Eem", "n400", "502"));
+//            patientDao.insert(new Patient(patient.getPatientId(), "Chalie", "Mack", "Gen", "n200", "301"));
+//            patientDao.insert(new Patient(patient.getPatientId(),"Kate", "Lynn", "Gen", "n200", "202"));
+//            patientDao.insert(new Patient(patient.getPatientId(),"Jason", "Kim", "Eem", "n400", "502"));
 //            testDao.insert(new Test(test.getTestId(), 2, "n200", 80, 120, 35.2, 6.2, 7.1));
 //            testDao.insert(new Test(test.getTestId(), 3, "n200", 80, 120, 35.2, 6.2, 7.1));
             return null;

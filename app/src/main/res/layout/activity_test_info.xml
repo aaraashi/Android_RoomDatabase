@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -24,55 +24,55 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <SearchView
-        android:id="@+id/search_view"
-        android:layout_width="100dp"
-        android:layout_height="40dp"
-        android:layout_below="@+id/textView_t_title"
-        android:layout_marginTop="10dp" />
-
     <TextView
         android:id="@+id/textView_nurseInfo"
-        android:layout_width="wrap_content"
+        android:layout_width="60dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginLeft="340dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         android:onClick="nurseInfo"
-        android:text="Angel486"
-        android:textColor="@color/colorGray"
-        android:textSize="14sp" />
+        android:textColor="@color/colorWhite"
+        android:textSize="14sp"
+        android:text=""
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/imageView_nurse"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <ImageView
         android:id="@+id/imageView_nurse"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_marginLeft="340dp"
         android:layout_marginTop="30dp"
+        android:layout_marginEnd="8dp"
         android:layout_weight="1"
         android:onClick="nurseInfo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/profile" />
 
     <TextView
         android:id="@+id/textView_t_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="120dp"
+        android:layout_marginTop="40dp"
         android:fontFamily="helvetica"
         android:text="@string/test_info"
         android:textAlignment="center"
         android:textColor="@color/colorGray"
         android:textSize="32sp"
-        android:textStyle="bold" />
-
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/imageView_nurse"/>
 
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/test_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="300dp"
-        android:layout_marginTop="220dp"
+        android:layout_marginTop="24dp"
         app:layoutManager="LinearLayoutManager"
+        app:layout_constraintTop_toBottomOf="@+id/textView_t_title"
         tools:listitem="@layout/test_list" />
 
 
@@ -80,17 +80,19 @@
         android:id="@+id/button_addTest"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/test_recycler_view"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="108dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="103dp"
+        android:layout_marginEnd="8dp"
         android:background="@drawable/button_forward"
         android:onClick="addNewTest"
         android:paddingLeft="30dp"
         android:paddingRight="30dp"
         android:text="Add New Test"
         android:textColor="#FFFFFF"
-        android:textSize="16sp" />
-</RelativeLayout>
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/test_recycler_view" />
+</androidx.constraintlayout.widget.ConstraintLayout>

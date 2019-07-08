@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,124 +8,111 @@
     android:orientation="vertical"
     tools:context=".WelcomeActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+
+    <TextView
+        android:id="@+id/textView_welcome"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="15dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/textView_nurseInfo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginLeft="320dp"
-            android:onClick="nurseInfo"
-            android:text="Angel486"
-            android:textColor="#FFFFFF"
-            android:textSize="14sp" />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="15dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/textView_welcome"
-            android:layout_width="300dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="Welcome Nurse Name!"
-            android:textColor="@color/cardview_light_background"
-            android:textSize="24sp" />
-
-        <ImageView
-            android:id="@+id/imageView_nurse"
-            android:layout_width="wrap_content"
-            android:layout_height="60dp"
-            android:layout_marginLeft="20dp"
-            android:layout_weight="1"
-            android:onClick="nurseInfo"
-            app:srcCompat="@drawable/profile" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="30dp"
-        android:layout_marginEnd="15dp"
-        android:orientation="horizontal">
+        android:layout_weight="1"
+        android:text="Welcome Nurse Name!"
+        android:textColor="@color/cardview_light_background"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/notice" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/textView_nurseInfo"
+        android:layout_width="60dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="15dp"
-        android:orientation="horizontal">
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:onClick="nurseInfo"
+        android:textColor="@color/colorWhite"
+        android:textSize="14sp"
+        android:text=""
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/imageView_nurse"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
-        <ImageButton
-            android:id="@+id/imgButton_patient"
-            android:layout_width="140dp"
-            android:layout_height="100dp"
-            android:layout_weight="1"
-            android:background="#00FFFFFF"
-            app:srcCompat="@drawable/patient_info"
-            android:onClick="patientInfo"/>
+    <ImageView
+        android:id="@+id/imageView_nurse"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="8dp"
+        android:layout_weight="1"
+        android:onClick="nurseInfo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/profile" />
 
-        <ImageButton
-            android:id="@+id/imgButton_test"
-            android:layout_width="140dp"
-            android:layout_height="100dp"
-            android:layout_marginStart="15dp"
-            android:layout_weight="1"
-            android:background="#00FFFFFF"
-            app:srcCompat="@drawable/test_info"
-            android:onClick="testInfo"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="380dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="15dp"
-        android:orientation="horizontal">
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="110dp"
+        android:layout_marginEnd="16dp"
+        android:layout_weight="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/notice" />
 
-        <ImageButton
-            android:id="@+id/imgButton_schedule"
-            android:layout_width="140dp"
-            android:layout_height="100dp"
-            android:layout_weight="1"
-            android:background="#00FFFFFF"
-            app:srcCompat="@drawable/schedule_info"
-            android:onClick="maintenance"/>
+    <ImageButton
+        android:id="@+id/imgButton_patient"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_weight="1"
+        android:background="#00FFFFFF"
+        android:onClick="patientInfo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3"
+        app:srcCompat="@drawable/patient_info" />
 
-        <ImageButton
-            android:id="@+id/imgButton_report"
-            android:layout_width="140dp"
-            android:layout_height="100dp"
-            android:layout_marginStart="15dp"
-            android:layout_weight="1"
-            android:background="#00FFFFFF"
-            app:srcCompat="@drawable/report_info"
-            android:onClick="maintenance"/>
+    <ImageButton
+        android:id="@+id/imgButton_test"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_weight="1"
+        android:background="#00FFFFFF"
+        android:onClick="testInfo"
+        app:layout_constraintStart_toEndOf="@+id/imgButton_patient"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3"
+        app:srcCompat="@drawable/test_info" />
 
-    </LinearLayout>
-</LinearLayout>
+    <ImageButton
+        android:id="@+id/imgButton_schedule"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_weight="1"
+        android:background="#00FFFFFF"
+        android:onClick="maintenance"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgButton_test"
+        app:srcCompat="@drawable/schedule_info" />
+
+    <ImageButton
+        android:id="@+id/imgButton_report"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_weight="1"
+        android:background="#00FFFFFF"
+        android:onClick="maintenance"
+        app:layout_constraintStart_toEndOf="@+id/imgButton_schedule"
+        app:layout_constraintTop_toBottomOf="@+id/imgButton_patient"
+        app:srcCompat="@drawable/report_info" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
