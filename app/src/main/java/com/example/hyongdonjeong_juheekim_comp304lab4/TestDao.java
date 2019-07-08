@@ -29,6 +29,4 @@ public interface TestDao {
 
     @Query("Select * from Test where patientId = :patientId")
     LiveData<List<Test>> getPatientTests(int patientId);
-//    @Query("SELECT * FROM Test WHERE TestId IN(:testId)")
-//    public abstract List findByIds(int[] testId);
 }
