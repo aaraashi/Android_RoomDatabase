@@ -12,13 +12,15 @@ public class TestViewModel extends AndroidViewModel {
     private TestRepository testRepository;
     private LiveData<Integer> insertResult;
     private LiveData<List<Test>> allTests;
-
+    private LiveData<List<Test>> patientTests;
+    private int patientId;
 
     public TestViewModel(@NonNull Application application) {
         super(application);
         testRepository = new TestRepository(application);
         insertResult = testRepository.getInsertResult();
         allTests = testRepository.getAllTests();
+        patientTests = testRepository.getPatientTests(patientId);
     }
     //
     public void insert(Test test) { testRepository.insert(test); }
@@ -33,7 +35,12 @@ public class TestViewModel extends AndroidViewModel {
         return insertResult;
     }
 
-    LiveData<List<Test>> getAllTests() { return allTests; }
+    public LiveData<List<Test>> getAllTests() { return allTests; }
+
+    public LiveData<List<Test>> getPatientTests(int patientId) {
+        patientTests = testRepository.getPatientTests(patientId);
+        return patientTests;
+    }
 
     public void setResult(int resultOk, Intent data) {
     }

@@ -14,14 +14,22 @@ public class TestRepository {
         this.testDao = testDao;
     }
     private LiveData<List<Test>> allTests;
+    private LiveData<List<Test>> patientTests;
+    private int patientId;
 
     public TestRepository(Context context){
         AppDatabase db = AppDatabase.getInstance(context);
         testDao = db.testDao();
         allTests = testDao.getAllTests();
+        patientTests = testDao.getPatientTests(patientId);
     }
 
-    LiveData<List<Test>> getAllTests() { return allTests; }
+    public LiveData<List<Test>> getAllTests() { return allTests; }
+
+    public LiveData<List<Test>> getPatientTests(int patientId) {
+        patientTests = testDao.getPatientTests(patientId);
+        return patientTests;
+    }
 
     public void insert(Test test) {
         new TestRepository.InsertTestAsyncTask(testDao).execute(test);
@@ -34,8 +42,6 @@ public class TestRepository {
     public void deleteAllTest() { new TestRepository.DeleteAllTestAsyncTask(testDao).execute();}
 
     public LiveData<Integer> getInsertResult() { return insertResult; }
-
-   // public LiveData<List<Test>> getAllTests() { return allTests; }
 
     private void insertAsync(final Test test){
 

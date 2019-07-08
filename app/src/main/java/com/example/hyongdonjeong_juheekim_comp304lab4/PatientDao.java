@@ -32,6 +32,6 @@ public interface PatientDao {
     @Query("Select * from Patient")
     LiveData<List<Patient>> getAllPatient();
 
-//    @Query("SELECT * FROM Patient WHERE PatientId IN(:patientId)")
-//    public abstract List findByIds(int[] patientId);
+    @Query("Select * from Patient where nurseId = :nurseId")
+    LiveData<List<Patient>> getPatients(String nurseId);
 }

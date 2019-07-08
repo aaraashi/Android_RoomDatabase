@@ -44,7 +44,10 @@ public class TestInfoActivity extends AppCompatActivity {
         tvNurseInfo.setText(nursePreference.getString("nurseIdString",""));
 
         testViewModel = ViewModelProviders.of(this).get(TestViewModel.class);
-        testViewModel.getAllTests().observe(this, new Observer<List<Test>>() {
+        intentGet = getIntent();
+        int patientId = Integer.parseInt(intentGet.getStringExtra(EXTRA_PATIENTID));
+        tvNurseInfo.setText(tvNurseInfo.getText() + ":" + intentGet.getStringExtra(EXTRA_PATIENTID) );
+        testViewModel.getPatientTests(patientId).observe(this, new Observer<List<Test>>() {
             @Override
             public void onChanged(@Nullable List<Test> tests) {
                 adapter.setTests(tests);
@@ -59,7 +62,7 @@ public class TestInfoActivity extends AppCompatActivity {
                 intent.putExtra(UpdateTestActivity.EXTRA_PATIENTID, String.valueOf(test.getPatientId()));
                 intent.putExtra(UpdateTestActivity.EXTRA_T_NURSEID, String.valueOf(test.getNurseId()));
                 intent.putExtra(UpdateTestActivity.EXTRA_BPL, String.valueOf(test.getBPL()));
-                intent.putExtra(UpdateTestActivity.EXTRA_BPH, test.getNurseId());
+                intent.putExtra(UpdateTestActivity.EXTRA_BPH, String.valueOf(test.getBPH()));
                 intent.putExtra(UpdateTestActivity.EXTRA_TEMP, String.valueOf(test.getTemperature()));
                 intent.putExtra(UpdateTestActivity.EXTRA_WEIGHT, String.valueOf(test.getWeight()));
                 intent.putExtra(UpdateTestActivity.EXTRA_HEIGHT, String.valueOf(test.getHeight()));
@@ -100,4 +103,9 @@ public class TestInfoActivity extends AppCompatActivity {
         Intent intent = new Intent(TestInfoActivity.this, WelcomeActivity.class );
         startActivity(intent);
     }
+
+    public void displayToast(String message){
+        Toast.makeText(TestInfoActivity.this, message, Toast.LENGTH_LONG).show();
+    }
+
 }

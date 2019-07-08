@@ -50,7 +50,13 @@ public class TestPatientInfoActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
         patientViewModel = ViewModelProviders.of(this).get(PatientViewModel.class);
-        patientViewModel.getAllPatient().observe(this, new Observer<List<Patient>>() {
+//        patientViewModel.getAllPatient().observe(this, new Observer<List<Patient>>() {
+//            @Override
+//            public void onChanged(@Nullable List<Patient> patients) {
+//                adapter.setPatients(patients);
+//            }
+//        });
+        patientViewModel.getPatients(nursePreference.getString("nurseIdString","")).observe(this, new Observer<List<Patient>>() {
             @Override
             public void onChanged(@Nullable List<Patient> patients) {
                 adapter.setPatients(patients);

@@ -15,12 +15,14 @@ public class PatientRepository {
     public PatientRepository(PatientDao patientDao) {
         this.patientDao = patientDao;
     }
-    private LiveData<List<Patient>> allPatients;
+    private LiveData<List<Patient>> allPatients, patients;
+    private String nurseId;
 
     public PatientRepository(Context context){
         AppDatabase db = AppDatabase.getInstance(context);
         patientDao = db.patientDao();
         allPatients = patientDao.getAllPatient();
+        patients = patientDao.getPatients(nurseId);
     }
 
     LiveData<List<Patient>> getAllPatient() { return allPatients; }
@@ -39,6 +41,11 @@ public class PatientRepository {
     public LiveData<Integer> getInsertResult() { return insertResult; }
 
     public LiveData<List<Patient>> getAllPatients() { return allPatients; }
+
+    public LiveData<List<Patient>> getPatients(String nurseId) {
+        allPatients = patientDao.getPatients(nurseId);
+        return allPatients;
+    }
 
     private void insertAsync(final Patient patient){
 
