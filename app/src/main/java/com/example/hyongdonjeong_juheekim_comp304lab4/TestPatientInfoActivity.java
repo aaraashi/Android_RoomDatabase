@@ -74,8 +74,14 @@ public class TestPatientInfoActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+
     public void addNewPatient (View v){
         Intent intent = new Intent(TestPatientInfoActivity.this, UpdatePatientActivity.class );
+        startActivity(intent);
+    }
+
+    public void backToMenu(View v) {
+        Intent intent = new Intent(TestPatientInfoActivity.this, WelcomeActivity.class );
         startActivity(intent);
     }
 }

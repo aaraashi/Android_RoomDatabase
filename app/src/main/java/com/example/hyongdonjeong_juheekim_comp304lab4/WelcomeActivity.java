@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class WelcomeActivity extends AppCompatActivity {
     private TextView tvNurseInfo, tvWelcome;
@@ -39,4 +40,14 @@ public class WelcomeActivity extends AppCompatActivity {
         Intent intent = new Intent(WelcomeActivity.this, TestPatientInfoActivity.class );
         startActivity(intent);
     }
+
+    public void maintenance (View v) {
+
+        displayToast("This menu is under maintenance.");
+    }
+
+    public void displayToast(String message){
+        Toast.makeText(WelcomeActivity.this, message, Toast.LENGTH_LONG).show();
+    }
+
 }

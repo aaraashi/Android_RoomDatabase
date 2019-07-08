@@ -120,6 +120,11 @@ public class UpdatePatientActivity extends AppCompatActivity {
 
     }
 
+    public void backToMenu(View v) {
+        Intent intent = new Intent(UpdatePatientActivity.this, WelcomeActivity.class );
+        startActivity(intent);
+    }
+
     public void displayToast(String message){
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
     }

@@ -131,6 +131,11 @@ public class UpdateTestActivity extends AppCompatActivity {
 
     }
 
+    public void backToMenu(View v) {
+        Intent intent = new Intent(UpdateTestActivity.this, WelcomeActivity.class );
+        startActivity(intent);
+    }
+
     public void displayToast(String message){
         Toast.makeText(UpdateTestActivity.this, message, Toast.LENGTH_LONG).show();
     }

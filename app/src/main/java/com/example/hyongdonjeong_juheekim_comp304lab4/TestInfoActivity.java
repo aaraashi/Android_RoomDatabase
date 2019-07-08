@@ -96,54 +96,8 @@ public class TestInfoActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    //    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//
-//        if (requestCode == ADD_TEST_REQUEST && resultCode == RESULT_OK) {
-//            int testId = data.getIntExtra(UpdateTestActivity.EXTRA_TESTID, 1);
-//            int patientId = data.getIntExtra(UpdateTestActivity.EXTRA_PATIENTID, 1);
-//            int nurseId = data.getIntExtra(UpdateTestActivity.EXTRA_T_NURSEID, 1);
-//            int BPL = data.getIntExtra(UpdateTestActivity.EXTRA_BPL, 1);
-//            int BPH = data.getIntExtra(UpdateTestActivity.EXTRA_BPH, 1);
-//            double temp = data.getDoubleExtra(UpdateTestActivity.EXTRA_TEMP, 1.0);
-//            double weight = data.getDoubleExtra(UpdateTestActivity.EXTRA_WEIGHT, 1.0);
-//            double height = data.getDoubleExtra(UpdateTestActivity.EXTRA_HEIGHT, 1.0);
-//            double ESL = data.getDoubleExtra(UpdateTestActivity.EXTRA_ESL, 1.0);
-//            double ESR = data.getDoubleExtra(UpdateTestActivity.EXTRA_ESR, 1.0);
-//
-//            Test test = new Test(patientId, nurseId, BPL, BPH, temp, weight, height, ESL, ESR);
-//            testViewModel.insert(test);
-//
-//            Toast.makeText(this, "Test saved", Toast.LENGTH_SHORT).show();
-//
-//        } else if (requestCode == EDIT_TEST_REQUEST && resultCode == RESULT_OK) {
-//            int id = data.getIntExtra(UpdateTestActivity.EXTRA_TESTID, -1);
-//
-//            if (id == -1) {
-//                Toast.makeText(this, "Test can't be updated", Toast.LENGTH_SHORT).show();
-//                return;
-//            }
-//
-//            //int testId = data.getIntExtra(UpdateTestActivity.EXTRA_TESTID, 1);
-//            int patientId = data.getIntExtra(UpdateTestActivity.EXTRA_PATIENTID, 1);
-//            int nurseId = data.getIntExtra(UpdateTestActivity.EXTRA_T_NURSEID, 1);
-//            int BPL = data.getIntExtra(UpdateTestActivity.EXTRA_BPL, 1);
-//            int BPH = data.getIntExtra(UpdateTestActivity.EXTRA_BPH, 1);
-//            double temp = data.getDoubleExtra(UpdateTestActivity.EXTRA_TEMP, 1.0);
-//            double weight = data.getDoubleExtra(UpdateTestActivity.EXTRA_WEIGHT, 1.0);
-//            double height = data.getDoubleExtra(UpdateTestActivity.EXTRA_HEIGHT, 1.0);
-//            double ESL = data.getDoubleExtra(UpdateTestActivity.EXTRA_ESL, 1.0);
-//            double ESR = data.getDoubleExtra(UpdateTestActivity.EXTRA_ESR, 1.0);
-//
-//            Test test = new Test(patientId, nurseId, BPL, BPH, temp, weight, height, ESL, ESR);
-//
-//            test.setTestId(id);
-//            testViewModel.update(test);
-//
-//            Toast.makeText(this, "Test updated", Toast.LENGTH_SHORT).show();
-//        } else {
-//            Toast.makeText(this, "Test not saved", Toast.LENGTH_SHORT).show();
-//        }
-//    }
+    public void backToMenu(View v) {
+        Intent intent = new Intent(TestInfoActivity.this, WelcomeActivity.class );
+        startActivity(intent);
+    }
 }

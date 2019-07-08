@@ -8,6 +8,22 @@
     android:background="@drawable/main_background"
     tools:context=".UpdatePatientActivity">
 
+    <Button
+        android:id="@+id/button_backToMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/button_menu"
+        android:onClick="backToMenu"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:text="@string/button_menu"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/textView_nurseInfo"
         android:layout_width="wrap_content"

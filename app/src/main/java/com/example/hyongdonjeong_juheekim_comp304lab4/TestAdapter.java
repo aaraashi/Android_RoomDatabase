@@ -31,14 +31,14 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.TestHolder> {
     @Override
     public void onBindViewHolder(@NonNull TestAdapter.TestHolder holder, int position) {
         Test currentTest = tests.get(position);
-        holder.textViewTestId.setText("TestId: " + (currentTest.getTestId()));
-        holder.textViewPatientId.setText("PatientId: " + (currentTest.getPatientId()));
-        holder.textViewNurseId.setText("NurseId: " + (currentTest.getNurseId()));
-        holder.textViewBPL.setText("BPL: " + (currentTest.getBPL()));
-        holder.textViewBPH.setText("BPH: " + (currentTest.getBPH()));
-        holder.textViewTemp.setText("Temp.: " + (currentTest.getTemperature()));
-        holder.textViewWeight.setText("Weight: " + (currentTest.getWeight()));
-        holder.textViewHeight.setText("Height: " + (currentTest.getHeight()));
+        holder.textViewTestId.setText("TestId: " + currentTest.getTestId());
+        holder.textViewPatientId.setText("PatientId: " + currentTest.getPatientId());
+        holder.textViewNurseId.setText("NurseId: " + currentTest.getNurseId());
+        holder.textViewBPL.setText("BPL: " + currentTest.getBPL());
+        holder.textViewBPH.setText("BPH: " + currentTest.getBPH());
+        holder.textViewTemp.setText("Temp.: " + currentTest.getTemperature()+" °F" );
+        holder.textViewWeight.setText("Weight: " + currentTest.getWeight()+" lbs");
+        holder.textViewHeight.setText("Height: " + currentTest.getHeight()+" ft");
 
     }
 

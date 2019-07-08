@@ -23,7 +23,7 @@
             android:id="@+id/textView_t_patientId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="100dp"
+            android:layout_marginLeft="140dp"
             android:text="PatientId"
             android:textSize="16sp" />
 
@@ -31,9 +31,16 @@
             android:id="@+id/textView_t_nurseId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="220dp"
+            android:layout_marginLeft="280dp"
             android:text="NurseId"
             android:textSize="16sp" />
+
+        <View
+            android:id="@+id/view_line"
+            android:layout_width="wrap_content"
+            android:layout_height="3dp"
+            android:layout_marginTop="28dp"
+            android:background="@color/colorTop"/>
 
         <TextView
             android:id="@+id/textView_t_BPL"
@@ -47,7 +54,7 @@
             android:id="@+id/textView_t_BPH"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="80dp"
+            android:layout_marginLeft="140dp"
             android:layout_marginTop="40dp"
             android:text="BPH" />
 
@@ -55,7 +62,7 @@
             android:id="@+id/textView_t_temp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="160dp"
+            android:layout_marginLeft="280dp"
             android:layout_marginTop="40dp"
             android:text="Temperature" />
 
@@ -63,33 +70,33 @@
             android:id="@+id/textView_t_weight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="280dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="70dp"
             android:text="Weight" />
 
         <TextView
             android:id="@+id/textView_t_height"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="80dp"
+            android:layout_marginLeft="140dp"
+            android:layout_marginTop="70dp"
             android:text="Height" />
 
-        <TextView
-            android:id="@+id/textView_t_ESL"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="120dp"
-            android:layout_marginTop="80dp"
-            android:text="ESL" />
+        <!--<TextView-->
+            <!--android:id="@+id/textView_t_ESL"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginLeft="120dp"-->
+            <!--android:layout_marginTop="80dp"-->
+            <!--android:text="ESL" />-->
 
-        <TextView
-            android:id="@+id/textView_t_ESR"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="200dp"
-            android:layout_marginTop="80dp"
-            android:text="ESR" />
+        <!--<TextView-->
+            <!--android:id="@+id/textView_t_ESR"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginLeft="200dp"-->
+            <!--android:layout_marginTop="80dp"-->
+            <!--android:text="ESR" />-->
 
     </RelativeLayout>
 

@@ -80,4 +80,9 @@ public class PatientInfoActivity extends AppCompatActivity {
         Intent intent = new Intent(PatientInfoActivity.this, UpdatePatientActivity.class );
         startActivity(intent);
     }
+
+    public void backToMenu(View v) {
+        Intent intent = new Intent(PatientInfoActivity.this, WelcomeActivity.class );
+        startActivity(intent);
+    }
 }
