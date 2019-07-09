@@ -66,75 +66,102 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView_nurse"
         tools:layout_editor_absoluteX="-8dp" />
 
-
-    <TextView
-        android:id="@+id/textView_col1"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/col_layout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="40dp"
-        android:text="Nurse ID"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-    <TextView
-        android:id="@+id/textView_col2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:layout_marginLeft="22dp"
-        android:text="FirstName"
-        app:layout_constraintStart_toEndOf="@+id/textView_col1"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-    <TextView
-        android:id="@+id/textView_col3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:layout_marginLeft="16dp"
-        android:text="LastName"
-        app:layout_constraintStart_toEndOf="@+id/textView_col2"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-    <TextView
-        android:id="@+id/textView_col4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:layout_marginLeft="16dp"
-        android:text="Dept."
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintStart_toEndOf="@+id/textView_col3" />
+        >
 
-    <TextView
-        android:id="@+id/textView_col5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:layout_marginLeft="24dp"
-        android:text="NurseID"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintStart_toEndOf="@+id/textView_col4" />
+        <TextView
+            android:id="@+id/textView_col1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="24dp"
+            android:text="ID"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-    <TextView
-        android:id="@+id/textView_col6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:layout_marginLeft="18dp"
-        android:text="Room"
-        app:layout_constraintStart_toEndOf="@+id/textView_col5"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        <Space
+            android:layout_width="0.2dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
 
+        <TextView
+            android:id="@+id/textView_col2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="FirstName"
+            app:layout_constraintStart_toEndOf="@+id/textView_col1"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <Space
+            android:layout_width="0.2dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/textView_col3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="LastName"
+            app:layout_constraintStart_toEndOf="@+id/textView_col2"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <Space
+            android:layout_width="0.4dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/textView_col4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Dept."
+            app:layout_constraintStart_toEndOf="@+id/textView_col3"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <Space
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/textView_col5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="NurseID"
+            app:layout_constraintStart_toEndOf="@+id/textView_col4"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <Space
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/textView_col6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
+            android:text="Room"
+            app:layout_constraintStart_toEndOf="@+id/textView_col5"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    </LinearLayout>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView_col1"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         app:layoutManager="LinearLayoutManager"
-        app:layout_constraintTop_toBottomOf="@+id/textView_col1"
+        app:layout_constraintTop_toBottomOf="@+id/col_layout"
         tools:listitem="@layout/patient_list" />
 
 
