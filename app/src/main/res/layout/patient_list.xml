@@ -36,14 +36,14 @@
             android:id="@+id/textView_p_dept"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="210dp"
+            android:layout_marginLeft="200dp"
             android:text="Dept." />
 
         <TextView
             android:id="@+id/textView_p_nurseId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="270dp"
+            android:layout_marginLeft="280dp"
             android:text="NurseID" />
 
         <TextView

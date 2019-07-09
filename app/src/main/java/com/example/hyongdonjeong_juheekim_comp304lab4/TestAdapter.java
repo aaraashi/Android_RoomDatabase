@@ -31,9 +31,9 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.TestHolder> {
     @Override
     public void onBindViewHolder(@NonNull TestAdapter.TestHolder holder, int position) {
         Test currentTest = tests.get(position);
-        holder.textViewTestId.setText("TestId: " + currentTest.getTestId());
-        holder.textViewPatientId.setText("PatientId: " + currentTest.getPatientId());
-        holder.textViewNurseId.setText("NurseId: " + currentTest.getNurseId());
+        holder.textViewTestId.setText("Test ID: " + currentTest.getTestId());
+        holder.textViewPatientId.setText("Patient ID: " + currentTest.getPatientId());
+        holder.textViewNurseId.setText("Nurse ID: " + currentTest.getNurseId());
         holder.textViewBPL.setText("BPL: " + currentTest.getBPL());
         holder.textViewBPH.setText("BPH: " + currentTest.getBPH());
         holder.textViewTemp.setText("Temp.: " + currentTest.getTemperature()+" °F" );
