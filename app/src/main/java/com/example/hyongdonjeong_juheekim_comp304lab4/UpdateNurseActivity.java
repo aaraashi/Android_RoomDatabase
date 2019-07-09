@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -58,30 +59,35 @@ public class UpdateNurseActivity extends AppCompatActivity {
 
     public void updateNurse (View v){
 
-        SharedPreferences nursePreference = getSharedPreferences("NursePref", MODE_PRIVATE);
-        String nurseId = nursePreference.getString("nurseIdString","");
+        if (!emptyValidation()) {
 
-        if (editText_password1.getText().toString().equals(editText_password2.getText().toString())){
-            nurse.setFirstname(editText_fname.getText().toString());
-            nurse.setLastname(editText_lname.getText().toString());
-            nurse.setDepartment(editText_dept.getText().toString());
-            nurse.setPassword(editText_password1.getText().toString());
-            nurse.setNurseId(nurseId);
+            SharedPreferences nursePreference = getSharedPreferences("NursePref", MODE_PRIVATE);
+            String nurseId = nursePreference.getString("nurseIdString", "");
 
-            displayToast("nurseId:"+ nurseId +"Firstname:"+ editText_fname.getText().toString()
-                    +"Lastname:"+ editText_lname.getText().toString()
-                    +"Department:"+ editText_dept.getText().toString()
-                    +"Password:"+ editText_password1.getText().toString());
+            if (editText_password1.getText().toString().equals(editText_password2.getText().toString())) {
+                nurse.setFirstname(editText_fname.getText().toString());
+                nurse.setLastname(editText_lname.getText().toString());
+                nurse.setDepartment(editText_dept.getText().toString());
+                nurse.setPassword(editText_password1.getText().toString());
+                nurse.setNurseId(nurseId);
 
-            nurseViewModel.update(nurse);
-            displayToast("The nurse information has been updated!");
+                displayToast("nurseId:" + nurseId + "Firstname:" + editText_fname.getText().toString()
+                        + "Lastname:" + editText_lname.getText().toString()
+                        + "Department:" + editText_dept.getText().toString()
+                        + "Password:" + editText_password1.getText().toString());
 
-            Intent intent = new Intent(UpdateNurseActivity.this, WelcomeActivity.class );
-            startActivity(intent);
+                nurseViewModel.update(nurse);
+                displayToast("The nurse information has been updated!");
 
+                Intent intent = new Intent(UpdateNurseActivity.this, WelcomeActivity.class);
+                startActivity(intent);
+
+            } else {
+                displayToast("Passwords are not same!");
+                return;
+            }
         }else{
-            displayToast("Passwords are not same!");
-            return;
+            displayToast("Empty Fields!");
         }
     }
 
@@ -89,4 +95,12 @@ public class UpdateNurseActivity extends AppCompatActivity {
         Toast.makeText(UpdateNurseActivity.this, message, Toast.LENGTH_LONG).show();
     }
 
+    // nurse id and password empty validation
+    private boolean emptyValidation() {
+        if (TextUtils.isEmpty(editText_password1.getText().toString()) || TextUtils.isEmpty(editText_password2.getText().toString())) {
+            return true;
+        }else {
+            return false;
+        }
+    }
 }

@@ -46,7 +46,6 @@ public class TestInfoActivity extends AppCompatActivity {
         testViewModel = ViewModelProviders.of(this).get(TestViewModel.class);
         intentGet = getIntent();
         int patientId = Integer.parseInt(intentGet.getStringExtra(EXTRA_PATIENTID));
-        tvNurseInfo.setText(tvNurseInfo.getText() + ":" + intentGet.getStringExtra(EXTRA_PATIENTID) );
         testViewModel.getPatientTests(patientId).observe(this, new Observer<List<Test>>() {
             @Override
             public void onChanged(@Nullable List<Test> tests) {
