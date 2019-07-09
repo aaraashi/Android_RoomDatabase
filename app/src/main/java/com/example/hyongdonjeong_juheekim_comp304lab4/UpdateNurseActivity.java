@@ -97,7 +97,9 @@ public class UpdateNurseActivity extends AppCompatActivity {
 
     // nurse id and password empty validation
     private boolean emptyValidation() {
-        if (TextUtils.isEmpty(editText_password1.getText().toString()) || TextUtils.isEmpty(editText_password2.getText().toString())) {
+        if (TextUtils.isEmpty(editText_password1.getText().toString()) || TextUtils.isEmpty(editText_password2.getText().toString())
+        || TextUtils.isEmpty(editText_fname.getText().toString()) || TextUtils.isEmpty(editText_lname.getText().toString())
+        || TextUtils.isEmpty(editText_dept.getText().toString())) {
             return true;
         }else {
             return false;

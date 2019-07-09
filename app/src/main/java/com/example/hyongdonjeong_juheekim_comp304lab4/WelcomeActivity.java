@@ -22,7 +22,7 @@ public class WelcomeActivity extends AppCompatActivity {
         tvWelcome = (TextView) findViewById(R.id.textView_welcome);
         SharedPreferences nursePreference = getSharedPreferences("NursePref", MODE_PRIVATE);
         tvNurseInfo.setText(nursePreference.getString("nurseIdString",""));
-        tvWelcome.setText("Welcome " + nursePreference.getString("nurseNameString","") + "!");
+        tvWelcome.setText("Welcome " + nursePreference.getString("nurseFNameString","") + "!");
 
     }
 
