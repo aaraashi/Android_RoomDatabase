@@ -14,7 +14,7 @@ public interface NurseDao {
     void insert(Nurse nurse);
 
     @Update
-    void update(Nurse nurse);
+    void update(Nurse nurse);//
 
     @Query("Select * from Nurse")
     LiveData<List<Nurse>> getAllNurses();
