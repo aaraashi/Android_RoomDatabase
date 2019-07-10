@@ -17,7 +17,6 @@
         <activity android:name=".UpdatePatientActivity" />
         <activity android:name=".PatientInfoActivity" />
         <activity android:name=".CreateAccountActivity" />
-        <activity android:name=".DatabaseExActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
