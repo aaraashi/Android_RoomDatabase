@@ -128,6 +128,7 @@ public class UpdateTestActivity extends AppCompatActivity {
         displayToast("Test deleted!");
 
         Intent intent = new Intent(UpdateTestActivity.this, TestInfoActivity.class );
+        intent.putExtra(TestInfoActivity.EXTRA_PATIENTID, textView_t_patient.getText().toString());
         startActivity(intent);
 
     }
